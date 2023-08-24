@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Enhancing Population Prevalence Estimation of CSID through Integrated Computational and Genetic Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="grant_files/libs/clipboard/clipboard.min.js"></script>
+<script src="grant_files/libs/quarto-html/quarto.js"></script>
+<script src="grant_files/libs/quarto-html/popper.min.js"></script>
+<script src="grant_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="grant_files/libs/quarto-html/anchor.min.js"></script>
+<link href="grant_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="grant_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="grant_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="grant_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="grant_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="grant_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="grant_files/libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Enhancing Population Prevalence Estimation of CSID through Integrated Computational and Genetic Analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<!-- Alt title: There is limited evidence to support CSID being a rare disease. -->
+<!-- Some notes on csl/biblio: csl is from https://www.zotero.org/styles so
+that we can have Vancouver style, since that's what most of these peeps publish with. 'Save as link' the Vancouver file. This is all per: https://quarto.org/docs/authoring/footnotes-and-citations.html#citation-style  
+
+Using Zotero -> Export Collection -> Better Bibtex. I've done just the .bib and also the one with files, can see what ends up being better. Suspect the .bib to be sufficient but could be fun to play around with.
+
+NOTE: Can do @X for single citation, multiple use [@X; @Y] and will do commas etc and be lovely
+-->
+<p><strong>Abstract:</strong> The accurate assessment of population prevalence for Congenital Sucrase-Isomaltase Deficiency (CSID) has been hindered by historical limitations in study design and the availability of comprehensive data. This proposal outlines a novel approach that leverages recent advancements in computational tools and genetic analysis to provide a more robust estimate of CSID prevalence. By integrating population databases, protein simulation techniques, and genetic variant prediction, this study aims to contribute essential insights into the prevalence of CSID and its clinical implications.</p>
+<p><strong>Introduction:</strong> Historical studies on CSID prevalence have been constrained by small sample sizes and homogeneous populations. Early studies that are typically cited feature sample sizes of 3 in CSID’s first description<span class="citation" data-cites="weijersDiarrhoeaCausedDeficiency1960"><sup><a href="#ref-weijersDiarrhoeaCausedDeficiency1960" role="doc-biblioref">1</a></sup></span>, 399, of which 339 were Caucasian<span class="citation" data-cites="welshIntestinalDisaccharidaseActivities1978"><sup><a href="#ref-welshIntestinalDisaccharidaseActivities1978" role="doc-biblioref">2</a></sup></span>, 56 Canadian Eskimos<span class="citation" data-cites="ellestad-sayedDisaccharideMalabsorptionDietary1978"><sup><a href="#ref-ellestad-sayedDisaccharideMalabsorptionDietary1978" role="doc-biblioref">3</a></sup></span> and 97 Greenlanders<span class="citation" data-cites="gudmand-hoyerSucraseDeficiencyGreenland1987"><sup><a href="#ref-gudmand-hoyerSucraseDeficiencyGreenland1987" role="doc-biblioref">4</a></sup></span>. In addition, recent findings indicate that the clinical presentation of CSID shares similarities with irritable bowel syndrome (IBS), raising concerns about accurate diagnosis and proper prevalence estimation<span class="citation" data-cites="henstromFunctionalVariantsSucrase2018 garcia-etxebarriaIncreasedPrevalenceRare2018a kimSucraseIsomaltaseDeficiencyPotential2020"><sup><a href="#ref-henstromFunctionalVariantsSucrase2018" role="doc-biblioref">5</a>–<a href="#ref-kimSucraseIsomaltaseDeficiencyPotential2020" role="doc-biblioref">7</a></sup></span>. Furthermore, the potential variability of CSID’s phenotype, including the population of heterozygote carriers, necessitates a comprehensive reevaluation of prevalence<span class="citation" data-cites="huseinHeterozygotesArePotential2019 habermanCongenitalSucraseisomaltaseDeficiency2017 taskinPrevalenceCongenitalSucraseisomaltase2023"><sup><a href="#ref-huseinHeterozygotesArePotential2019" role="doc-biblioref">8</a>–<a href="#ref-taskinPrevalenceCongenitalSucraseisomaltase2023" role="doc-biblioref">10</a></sup></span>.</p>
+<!-- <sup>,</sup> -->
+<p><strong>Computational Advancements and Variant Prediction:</strong> Advancements in computational biology offer an opportunity to enhance the accuracy of prevalence estimation. Databases such as ClinVar and gnomAD now encompass diverse and extensive population data[<strong>FIXME ADD CITATIONS</strong>]. However, the challenge remains that only a limited subset of variants, around 60, have undergone clinical annotation. To address this, predictive tools must be employed to extrapolate the impact of uncharacterized variants.</p>
+<!-- I think move this below -->
+<p>These predictive tools, including gnomAD and ClinVar’s Variant Effect Predictor (VEP), provide an avenue to explore novel variants’ potential clinical relevance.[<strong>OK, so here we’re gonna need to get the numbers – current in ClinVar, gnomAD, and then from the new nature paper. Can be done in like… 30 mins to an hour depending on laziness… ALSO MAYBE thIS SHOULD GO ON IN BELOW SECTION</strong>]</p>
+<p><strong>Protein Simulation and Interaction Analysis:</strong> At the protein simulation level, revolutionary tools like AlphaFold <strong>ADD ALPHAFOLD CITE</strong> and DiffDock<span class="citation" data-cites="corsoDiffDockDiffusionSteps2023"><sup><a href="#ref-corsoDiffDockDiffusionSteps2023" role="doc-biblioref">11</a></sup></span> enable the modeling and evaluation of variant-protein interactions. These tools have the capacity to predict the effects of Sucrase-Isomaltase (SI) variants on protein function, such as their interactions with sucrose and heterozygotic interactions. Integration of these tools is facilitated by the recently reported Foldy<span class="citation" data-cites="robertsFoldyWebApplication2023"><sup><a href="#ref-robertsFoldyWebApplication2023" role="doc-biblioref">12</a></sup></span>.</p>
+<p><strong>Genetic Analysis and Cross-Referencing:</strong> Novel genetic analysis tools have recently emerged, providing insights into the genetic landscape of CSID. While gnomAD and ClinVar have integrated Variant Effect Predictor (VEP), these have been limited in accuracy, and recent protein language models may provide better predictions<span class="citation" data-cites="brandesGenomewidePredictionDisease2023"><sup><a href="#ref-brandesGenomewidePredictionDisease2023" role="doc-biblioref">13</a></sup></span>. Preliminary analysis employing these tools predicts a substantial number of variants associated with CSID. This genetic analysis can be cross-referenced with data from ClinVar and insights gained from protein simulations. By combining these diverse data sources, a comprehensive picture of CSID’s genetic factors and potential prevalence can be developed.</p>
+<p><strong>Conclusion:</strong> By synergistically combining computational analysis, protein simulation, and genetic assessment, this research proposes to provide a more accurate estimate of the prevalence of CSID. The cumulative results from these interdisciplinary approaches will offer a stronger foundation for understanding the genetic and molecular basis of CSID and its broader implications for clinical diagnosis and management.</p>
+<section id="supplement" class="level1">
+<h1>Supplement</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hi!</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"hello"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-line-spacing="2" role="list">
+<div id="ref-weijersDiarrhoeaCausedDeficiency1960" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Weijers, H. A., va de KAMER, J. H., Mossel, D. A. &amp; Dicke, W. K. <a href="https://doi.org/10.1016/s0140-6736(60)91381-7">Diarrhoea caused by deficiency of sugar-splitting enzymes</a>. <em>Lancet (London, England)</em> <strong>2</strong>, 296–297 (1960).</div>
+</div>
+<div id="ref-welshIntestinalDisaccharidaseActivities1978" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Welsh, J. D., Poley, J. R., Bhatia, M. &amp; Stevenson, D. E. <a href="https://www.ncbi.nlm.nih.gov/pubmed/100368">Intestinal disaccharidase activities in relation to age, race, and mucosal damage</a>. <em>Gastroenterology</em> <strong>75</strong>, 847–855 (1978).</div>
+</div>
+<div id="ref-ellestad-sayedDisaccharideMalabsorptionDietary1978" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Ellestad-Sayed, J., Haworth, J. &amp; Hildes, J. <a href="https://doi.org/10.1093/ajcn/31.8.1473">Disaccharide malabsorption and dietary patterns in two <span>Canadian Eskimo</span> Communities1234</a>. <em>The American Journal of Clinical Nutrition</em> <strong>31</strong>, 1473–1478 (1978).</div>
+</div>
+<div id="ref-gudmand-hoyerSucraseDeficiencyGreenland1987" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Gudmand-Høyer, E., Fenger, H. J., Kern-Hansen, P. &amp; Madsen, P. R. <a href="https://doi.org/10.3109/00365528708991851">Sucrase deficiency in <span>Greenland</span>. <span>Incidence</span> and genetic aspects</a>. <em>Scandinavian Journal of Gastroenterology</em> <strong>22</strong>, 24–28 (1987).</div>
+</div>
+<div id="ref-henstromFunctionalVariantsSucrase2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Henström, M. <em>et al.</em> <a href="https://doi.org/10.1136/gutjnl-2016-312456">Functional variants in the sucraseisomaltase gene associate with increased risk of irritable bowel syndrome</a>. <em>Gut</em> <strong>67</strong>, 263–270 (2018).</div>
+</div>
+<div id="ref-garcia-etxebarriaIncreasedPrevalenceRare2018a" class="csl-entry" role="listitem">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Garcia-Etxebarria, K. <em>et al.</em> <a href="https://doi.org/10.1016/j.cgh.2018.01.047">Increased <span>Prevalence</span> of <span class="nocase">Rare Sucrase-isomaltase Pathogenic Variants</span> in <span>Irritable Bowel Syndrome Patients</span></a>. <em>Clinical Gastroenterology and Hepatology</em> <strong>16</strong>, 1673–1676 (2018).</div>
+</div>
+<div id="ref-kimSucraseIsomaltaseDeficiencyPotential2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">Kim, S. B., Calmet, F. H., Garrido, J., Garcia-Buitrago, M. T. &amp; Moshiree, B. <a href="https://doi.org/10.1007/s10620-019-05780-7">Sucrase-<span>Isomaltase Deficiency</span> as a <span>Potential Masquerader</span> in <span>Irritable Bowel Syndrome</span></a>. <em>Digestive Diseases and Sciences</em> <strong>65</strong>, 534–540 (2020).</div>
+</div>
+<div id="ref-huseinHeterozygotesArePotential2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Husein, D. M., Wanes, D., Marten, L. M., Zimmer, K.-P. &amp; Naim, H. Y. <a href="https://doi.org/10.3390/nu11102290">Heterozygotes <span>Are</span> a <span>Potential New Entity</span> among <span>Homozygotes</span> and <span>Compound Heterozygotes</span> in <span>Congenital Sucrase-Isomaltase Deficiency</span></a>. <em>Nutrients</em> <strong>11</strong>, 2290 (2019).</div>
+</div>
+<div id="ref-habermanCongenitalSucraseisomaltaseDeficiency2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Haberman, Y. <em>et al.</em> <a href="https://doi.org/10.1097/MPG.0000000000001424">Congenital <span class="nocase">Sucrase-isomaltase Deficiency</span>: <span>A Novel Compound Heterozygous Mutation Causing Aberrant Protein Localization</span></a>. <em>Journal of pediatric gastroenterology and nutrition</em> <strong>64</strong>, 770–776 (2017).</div>
+</div>
+<div id="ref-taskinPrevalenceCongenitalSucraseisomaltase2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">Taskin, D. G. <em>et al.</em> <a href="https://doi.org/10.1007/s12041-023-01428-8">Prevalence of congenital sucrase-isomaltase deficiency in <span>Turkey</span> may be much higher than the estimates</a>. <em>Journal of Genetics</em> <strong>102</strong>, 31 (2023).</div>
+</div>
+<div id="ref-corsoDiffDockDiffusionSteps2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">11. </div><div class="csl-right-inline">Corso, G., Stärk, H., Jing, B., Barzilay, R. &amp; Jaakkola, T. <span>DiffDock</span>: <span>Diffusion Steps</span>, <span>Twists</span>, and <span>Turns</span> for <span>Molecular Docking</span>. (2023) doi:<a href="https://doi.org/10.48550/arXiv.2210.01776">10.48550/arXiv.2210.01776</a>.</div>
+</div>
+<div id="ref-robertsFoldyWebApplication2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">12. </div><div class="csl-right-inline">Roberts, J. B. <em>et al.</em> Foldy: A web application for interactive protein structure analysis. (2023) doi:<a href="https://doi.org/10.1101/2023.05.11.540333">10.1101/2023.05.11.540333</a>.</div>
+</div>
+<div id="ref-brandesGenomewidePredictionDisease2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">13. </div><div class="csl-right-inline">Brandes, N., Goldman, G., Wang, C. H., Ye, C. J. &amp; Ntranos, V. Genome-wide prediction of disease variant effects with a deep protein language model. <em>Nature Genetics</em> (2023) doi:<a href="https://doi.org/10.1038/s41588-023-01465-0">10.1038/s41588-023-01465-0</a>.</div>
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

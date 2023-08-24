@@ -1,0 +1,73 @@
+---
+title: "Enhancing Population Prevalence Estimation of CSID through Integrated Computational and Genetic Analysis"
+bibliography: csid_citations_bb.bib
+csl: nature-genetics.csl
+format:
+  html:
+    # code-fold: true
+    theme:
+      light: zephyr
+      dark: cyborg
+      # light: vapor
+---
+
+<!-- Alt title: There is limited evidence to support CSID being a rare disease. -->
+
+<!-- Some notes on csl/biblio: csl is from https://www.zotero.org/styles so
+that we can have Vancouver style, since that's what most of these peeps publish with. 'Save as link' the Vancouver file. This is all per: https://quarto.org/docs/authoring/footnotes-and-citations.html#citation-style  
+
+Using Zotero -> Export Collection -> Better Bibtex. I've done just the .bib and also the one with files, can see what ends up being better. Suspect the .bib to be sufficient but could be fun to play around with.
+
+NOTE: Can do @X for single citation, multiple use [@X; @Y] and will do commas etc and be lovely
+-->
+
+
+**Abstract:**
+The accurate assessment of population prevalence for Congenital Sucrase-Isomaltase Deficiency (CSID) has been hindered by historical limitations in study design and the availability of comprehensive data. This proposal outlines a novel approach that leverages recent advancements in computational tools and genetic analysis to provide a more robust estimate of CSID prevalence. By integrating population databases, protein simulation techniques, and genetic variant prediction, this study aims to contribute essential insights into the prevalence of CSID and its clinical implications.
+
+**Introduction:**
+Historical studies on CSID prevalence have been constrained by small sample sizes and homogeneous populations. Early studies that are typically cited feature sample sizes of 3 in CSID's first description [@weijersDiarrhoeaCausedDeficiency1960], 399, of which 339 were Caucasian @welshIntestinalDisaccharidaseActivities1978, 56 Canadian Eskimos @ellestad-sayedDisaccharideMalabsorptionDietary1978 and 97 Greenlanders @gudmand-hoyerSucraseDeficiencyGreenland1987. In addition, recent findings indicate that the clinical presentation of CSID shares similarities with irritable bowel syndrome (IBS), raising concerns about accurate diagnosis and proper prevalence estimation[@henstromFunctionalVariantsSucrase2018; @garcia-etxebarriaIncreasedPrevalenceRare2018a; @kimSucraseIsomaltaseDeficiencyPotential2020]. Furthermore, the potential variability of CSID's phenotype, including the population of heterozygote carriers, necessitates a comprehensive reevaluation of prevalence 
+[@huseinHeterozygotesArePotential2019; @habermanCongenitalSucraseisomaltaseDeficiency2017;  @taskinPrevalenceCongenitalSucraseisomaltase2023].
+
+<!-- <sup>,</sup> -->
+
+**Computational Advancements and Variant Prediction:**
+Advancements in computational biology offer an opportunity to enhance the accuracy of prevalence estimation. Databases such as ClinVar and gnomAD now encompass diverse and extensive population data[**FIXME ADD CITATIONS**]. However, the challenge remains that only a limited subset of variants, around 60, have undergone clinical annotation. To address this, predictive tools must be employed to extrapolate the impact of uncharacterized variants. 
+
+<!-- I think move this below -->
+These predictive tools, including gnomAD and ClinVar's Variant Effect Predictor (VEP), provide an avenue to explore novel variants' potential clinical relevance.[**OK, so here we're gonna need to get the numbers -- current in ClinVar, gnomAD, and then from the new nature paper. Can be done in like... 30 mins to an hour depending on laziness... ALSO MAYBE thIS SHOULD GO ON IN BELOW SECTION**]
+
+**Protein Simulation and Interaction Analysis:**
+At the protein simulation level, revolutionary tools like AlphaFold **ADD ALPHAFOLD CITE** and DiffDock[@corsoDiffDockDiffusionSteps2023] enable the modeling and evaluation of variant-protein interactions. These tools have the capacity to predict the effects of Sucrase-Isomaltase (SI) variants on protein function, such as their interactions with sucrose and heterozygotic interactions. Integration of these tools is facilitated by the recently reported Foldy @robertsFoldyWebApplication2023.
+
+**Genetic Analysis and Cross-Referencing:**
+Novel genetic analysis tools have recently emerged, providing insights into the genetic landscape of CSID. While gnomAD and ClinVar have integrated Variant Effect Predictor (VEP), these have been limited in accuracy, and recent protein language models may provide better predictions
+[@brandesGenomewidePredictionDisease2023]. Preliminary analysis employing these tools predicts a substantial number of variants associated with CSID. This genetic analysis can be cross-referenced with data from ClinVar and insights gained from protein simulations. By combining these diverse data sources, a comprehensive picture of CSID's genetic factors and potential prevalence can be developed.
+
+**Conclusion:**
+By synergistically combining computational analysis, protein simulation, and genetic assessment, this research proposes to provide a more accurate estimate of the prevalence of CSID. The cumulative results from these interdisciplinary approaches will offer a stronger foundation for understanding the genetic and molecular basis of CSID and its broader implications for clinical diagnosis and management.
+
+
+# Supplement 
+
+## gnomAD Variant Data
+```{python}
+"""
+This cell does some analysis on gnomAD data for the SI gene. 
+"""
+import pandas as pd
+
+gnomad = pd.read_csv("data/gnomAD_420_2023.csv")
+gnomad.head()
+```
+
+## ESM1b
+```{python}
+"""
+This cell counts the number of deleterious SI variants and also plots the distribution of scores.
+"""
+import pandas as pd
+
+si_vep = pd.read_csv("data/ESM1b_SI.csv")
+si_vep.head()
+```
