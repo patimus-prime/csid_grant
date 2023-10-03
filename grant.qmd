@@ -1,5 +1,5 @@
 ---
-title: "Enhancing Population Prevalence Estimation of CSID and Improved Variant Annotation through Integrated Computational and Genetic Analysis"
+title: "Enhancing Population Prevalence Estimation of CSID and Improving Variant Annotation through Integrated Computational and Genetic Analysis"
 bibliography: csid_citations_bb.bib
 csl: nature-genetics.csl
 format:
@@ -21,43 +21,96 @@ Using Zotero -> Export Collection -> Better Bibtex. I've done just the .bib and 
 NOTE: Can do @X for single citation, multiple use [@X; @Y] and will do commas etc and be lovely
 -->
 
+###### (Note: light/dark mode button in top right.)
 
-**Abstract:**
-The accurate assessment of population prevalence for Congenital Sucrase-Isomaltase Deficiency (CSID) has been hindered by historical limitations in study design and the availability of comprehensive data. This proposal outlines a novel approach that leverages recent advancements in computational tools and genetic analysis to provide a more robust estimate of CSID prevalence, and more thorough variant annotation for the disease. By integrating population databases, protein simulation techniques, and variant prediction tools, this study aims to contribute essential insights into the prevalence of CSID and its clinical implications.
+# Abstract
+This proposal outlines a novel approach that leverages recent advancements in computational tools and genetic analysis to provide more thorough variant annotation for CSID and thus facilitate clinical diagnosis and present a more robust estimate of CSID prevalence. Previous studies have been been hindered by historical limitations in study design and data availability. By integrating genetic databases, protein simulation techniques, and variant prediction tools, this study aims to identify new variants of interest and contribute insights into the molecular and genetic pathology of CSID, its clinical implications and potentially its prevalence.
 
-**Introduction:**
-Historical studies on CSID prevalence have been constrained by small sample sizes and homogeneous populations. Early studies that are typically cited feature sample sizes of 3 in CSID's first description [@weijersDiarrhoeaCausedDeficiency1960], 399, of which 339 were Caucasian @welshIntestinalDisaccharidaseActivities1978, 56 Canadian Eskimos @ellestad-sayedDisaccharideMalabsorptionDietary1978 and 97 Greenlanders @gudmand-hoyerSucraseDeficiencyGreenland1987. In addition, recent findings indicate that the clinical presentation of CSID shares similarities with irritable bowel syndrome (IBS), raising concerns about accurate diagnosis and proper prevalence estimation[@henstromFunctionalVariantsSucrase2018; @garcia-etxebarriaIncreasedPrevalenceRare2018a; @kimSucraseIsomaltaseDeficiencyPotential2020]. Furthermore, the potential variability of CSID's phenotype, including the population of heterozygote carriers, necessitates a comprehensive reevaluation of prevalence 
+# Introduction and Preliminary Analysis
+Historical studies of CSID prevalence and its mutational landscape have been constrained by small sample sizes and homogeneous populations. Early studies that are typically cited feature sample sizes of 3 in CSID's first description [@weijersDiarrhoeaCausedDeficiency1960], 399, of which 339 were Caucasian @welshIntestinalDisaccharidaseActivities1978, 56 Canadian Eskimos @ellestad-sayedDisaccharideMalabsorptionDietary1978 and 97 Greenlanders @gudmand-hoyerSucraseDeficiencyGreenland1987. In addition, recent findings indicate that the clinical presentation of CSID shares similarities with irritable bowel syndrome (IBS), raising concerns about clinical presentation and accurate diagnosis [@henstromFunctionalVariantsSucrase2018; @garcia-etxebarriaIncreasedPrevalenceRare2018a; @kimSucraseIsomaltaseDeficiencyPotential2020]. Furthermore, the potential variability of CSID's phenotype, including the population of heterozygote carriers that experience symptoms, necessitates a more thorough investigation of its genetic and molecular causes, improvement of diagnoistic tools and a reevaluation of its prevalence
 [@huseinHeterozygotesArePotential2019; @habermanCongenitalSucraseisomaltaseDeficiency2017;  @taskinPrevalenceCongenitalSucraseisomaltase2023].
 
 <!-- <sup>,</sup> -->
 
-**Computational Advancements and Variant Prediction:**
-Advancements in computational biology offer an opportunity to enhance the accuracy of prevalence estimation. Databases such as ClinVar and gnomAD now encompass diverse and extensive population data[**FIXME ADD CITATIONS**]. However, the challenge remains that only a limited subset of variants, around 60, have undergone clinical annotation. To address this, predictive tools must be employed to extrapolate the impact of uncharacterized variants. 
+### Computational Advancements and Variant Prediction
+Advancements in computational biology offer an opportunity to enhance the prediciton and identification of deleterious mutations and inform diagnostics and prevalence in the population.
 
-<!-- I think move this below -->
-These predictive tools, including gnomAD and ClinVar's Variant Effect Predictor (VEP), provide an avenue to explore novel variants' potential clinical relevance.[**OK, so here we're gonna need to get the numbers -- current in ClinVar, gnomAD, and then from the new nature paper. Can be done in like... 30 mins to an hour depending on laziness... ALSO MAYBE thIS SHOULD GO ON IN BELOW SECTION**]
+Databases such as ClinVar and gnomAD now encompass diverse and extensive population variant data[@chenGenomewideMutationalConstraint2022; @landrumClinVarPublicArchive2016]. GnomAD includes ClinVar clinical annotations of mutations and predictions of variant effects from the Ensembl Variant Effect Predictor (VEP)[@mclarenEnsemblVariantEffect2016]. Previous work analyzing gnomAD data for Sucrase-Isomaltase (SI) gene only included known variants[@] 
 
-**Protein Simulation and Interaction Analysis:**
-At the protein simulation level, revolutionary tools like AlphaFold **ADD ALPHAFOLD CITE** and DiffDock[@corsoDiffDockDiffusionSteps2023] enable the modeling and evaluation of variant-protein interactions. These tools have the capacity to predict the effects of Sucrase-Isomaltase (SI) variants on protein function, such as their interactions with sucrose and heterozygotic interactions. Integration of these tools is facilitated by the recently reported Foldy @robertsFoldyWebApplication2023.
+As of 17 September 2023, gnomAD contains 3470 variants for SI, and contains 646 ClinVar variants. Of the 646 ClinVar variants, 29 are annotated as pathogenic/likely pathogenic, 66 have conflicting interpretations of pathogenicity, and 272 are of uncertain significance. Therefore, considering all gnomAD data, most entries do not have clinical annotations or have not been well characterized.
 
-**Genetic Analysis and Cross-Referencing:**
-Novel genetic analysis tools have recently emerged, providing insights into the genetic landscape of CSID. While gnomAD and ClinVar have integrated Variant Effect Predictor (VEP), these have been limited in accuracy, and a more recent protein language model may provide better predictions
-[@brandesGenomewidePredictionDisease2023]. Preliminary analysis employing this tool suggests a large number of variants of unknown consequence may be associated with CSID. This analysis can be cross-referenced with data from ClinVar, gnomAD, and molecular simulations. By combining these diverse data sources, a more comprehensive picture of CSID's associated mutations and potential prevalence can be developed.
+Predictive tools can be employed to predict the impact of uncharacterized variants. GnomAD and ClinVar use VEP, which predicts type of consequence -- e.g. missense, frameshift, intron. This is often insufficient to assess the whether a variant is deleterious. Fortunately, new methods have emerged: both at the protein-ligand simulation level and some LLM-based models, one of which can be applied that predicts effects for all missense mutations[@brandesGenomewidePredictionDisease2023]. **A preliminary analysis using this model is provided below**. This and other new models could be applied to other types of variants such as indels, stop gained or even intron variants[@kurosawaPDIVASPathogenicityPredictor2023; @brandesGenomewidePredictionDisease2023].
 
-**Conclusion:**
+
+### Protein Simulation and Interaction Analysis
+An orthogonal method to large language models is simulation at the protein/molecular level. Revolutionary tools like AlphaFold [@jumperHighlyAccurateProtein2021] and DiffDock[@corsoDiffDockDiffusionSteps2023] enable the modeling and evaluation of variant-protein interactions. AlphaFold can generate mutant structures from their sequences, and then these structures and their interaction with sucrose or with other proteins can be simulated using a variety of molecular simulation technologies. A promising recent tool is DiffDock[@corsoDiffDockDiffusionSteps2023], iterations of DiffDock to enable prediction protein-protein interactions or improve prediction accuracy[@ketataDiffDockPPRigidProteinProtein2023; @brocidiaconoPLANTAINDiffusioninspiredPose2023], and more established tools such as AutoDock Vina (**FIXME ADD VINA or autoDock**). These tools can be used to to predict the effects of SI variants on protein function, such as their interactions with sucrose or heterozygotic self-interactions. Integration of these tools is facilitated by the recently reported Foldy[@robertsFoldyWebApplication2023].
+
+The sensitivity of these tools to separate predicted interactions of benign and mutant proteins is not guaranteed and warrants orthogonal predictions with large language models. Previous benchmarking of AlphaFold-generated structures with molecular docking had disappointing results[@wongBenchmarkingAlphaFoldenabledMolecular2022], but newer tools like DiffDock and PLANTAIN may provide better outcomes. DiffDock reports an accuracy, when simulating without a known binding pocket, of 29%[@corsoDiffDockDiffusionSteps2023]. PLANTAIN attempts to improve this accuracy by optimzing the scoring function DiffDock uses and may allow for more fruitful simulation[@brocidiaconoPLANTAINDiffusioninspiredPose2023]. AutoDock tools are more established but may be less accurate[@corsoDiffDockDiffusionSteps2023]; but do account for binding pockets and thus may be useful to compare predictions with. (**FIXME ADD VINA etc.**)
+
+### Genetic Analysis and Large Language Models
+Novel genetic analysis tools have recently emerged, providing insights into the genetic landscape of CSID. While gnomAD and ClinVar have integrated VEP, this model is limited in the scope of its predictions, and a more recent protein language model may provide better predictions for missense variants
+[@brandesGenomewidePredictionDisease2023]. Preliminary analysis employing this tool suggests a large number of missense variants of currently unknown consequence may be associated with CSID. This analysis can be cross-referenced with data from ClinVar, gnomAD, molecular simulations, and lab confirmation. By combining these diverse data sources, a more comprehensive picture of CSID's associated mutations and potential prevalence can be developed.
+
+Using this protein language model we can predict the delteriousness of missense mutations. The model outputs a score for each missense mutation, and an arbitrary threshold for deleterious/benign mutations is reported[@brandesGenomewidePredictionDisease2023]. The graph below is constructed using gnomAD data for missense variants and this model:
+
+In this preliminary analysis, ClinVar annotated variants that are benign/likely benign and pathogenic/likely pathogenic are shown with green/red lines overlaid on the distribution of variants in gnomAD and their predicted deleteriousness. There are limited missense annotated variants compared to the overall dataset and skepticism is warranted -- but a trend does appear amongst benign mutations to be above the score threshold and be correctly separated.  
+
+Overall, the population of predicted missense mutations that may be deleterious is XXX. To validate these results, a good approach may be to start from the most deleterious predicted mutation and work up the scores.
+
+### Background and Collaboration
+
+My background includes an MS in bioinformatics where I gained experience in some protein analysis tooling, 2 years in pharameceutical R&D at Eli Lilly performing physicochemical testing on antibodies and peptides to assess stability, and a BS in Chemical Engineering, BS in Molecular and Cellular Biology and BA in Biochemistry. I've been working on this proposal after identifying a gap in the literature, and after being intrigued by this disease during my patient experience with CSID as a candidate explanation.
+
+So, finding a PI for this project that may be more experienced with either the disease or some of the methods involved would be very helpful and appreciated.
+
+Additionally, there are several other opportunities for collaboration on this project:
+- D'Amato, Naim for lab confirmation and disease expertise
+- Foldy developers/Keasling lab/Berkeley National Lab for features may use and integrate into the software
+- DiffDock and PLANTAIN authors, or other molecular simulation experts
+
+
+## Cost/Budget
+
+**(Ask about lab confirmation costs)**
+
+**(Ask about salary/stipend/consulting? idk how this works with QOL)**
+
+Using the Foldy architecture/out of the box solution for AlphaFold and molecular simulation, computation will run on Google Cloud. The SI complex is about 1500 residues; Foldy documentation suggests that 3000 residue complexes be run on a machine type that costs about $5500 a month. Therefore a mid-range machine may be appropriate, one of which costs around $2500 a month. Low-range machines of about $600 a month are also available but unlikely to have sufficient resources to run the SI complex.
+
+The scope of the final project will dictate how many variants are run and the implementation of other tools beyond what is included in Foldy (Foldy includes AlphaFold, DiffDock and AutoDock Vina along with database integration). These tools will likely run on the same machine but require additional development time.
+
+## Timeline and Milestones
+
+(**Ask about lab confirmation timeline**)
+
+This study proposes computational methods and laboratory confirmation. The LLMs are relatively cheap to run, whereas the infrastructure and machines for AlphaFold and molecular simulations are more intensive. 
+
+Further, there are models not included in Foldy. Timeline to implementation of different methods will be influenced by potential collaboration partners and documentation of methods, namely PLANTAIN and other LLM. Using Foldy as-is however, deployment is finished in a few days (time for machine to boot and download relevant databases), after which simulations can be run. Initially, scripts would be developed to construct sequences from Ensembl/UniProt consensus sequence, gnomAD data, or other data sources.
+
+Laboratory confirmation can occur after all results have been generated, or after smaller bolus runs of the simulations. This strategy may be superior to inform model optimization and feasibility. 
+
+A reasonable order of events or timeline may look like the below:
+1. Validate LLM model: **Lab validation, timeline per variant? of LLM missense model(??)**
+2. Initial protein simulation analysis: setup of as-is of Foldy and development, validation of scripts to generate mutant protein sequences (2 weeks)
+3. Running a small sample, validate protein simulation strategy; unknown how much time to generate each SI complex, molecular simulation should be relatively quick
+4. **Lab confirmation/validation of Fold/docking results(??)**
+5. Integration and validation of other models, e.g. other LLM, or other simulation like PLANTAIN, DiffDock-PP
+6. **More lab confirmation**
+
+Therefore within **dev/simulation + lab confirmation** some idea of validity of models and feasibility can be achieved. Then, conservatively, within **... a few months of development and further lab confirmation...?** the overall feasibilty and scope of the project can be assessed.
+
+
+
+
+<!-- **Conclusion:**
 By synergistically combining computational analysis, protein simulation, and genetic assessment, this research proposes to provide a more accurate estimate of the prevalence of CSID. The cumulative results from these interdisciplinary approaches will offer a stronger foundation for understanding the genetic and molecular basis of CSID and its broader implications for clinical diagnosis and management.
 
+ -->
 
-
-
-
-<!-- Below describes some of the data I'm using to refute the previous gnomAD work. I can email those guys too and ask about their thoughts on it, and be respectful -- this is another one of the uhm, like the tech report at Lilly. Just say... hey I read your paper and want to do some similar follow up work and include predicted variants. Do you have suggestions or thoughts thanks bai. 
-
-We can probably start emailing tonight too, don't need to wait really. -->
 
 # Supplement 
 
-## Preliminary Analysis, gnomAD data and protein language model VEP 
+## Preliminary Analysis, gnomAD data and protein language model
 
 As of 17 September 2023, the gnomAD v2.1.1 dataset contains 3470 variants, and ClinVar contains 988 variants. The ClinVar annotations are: 
 ```{python}
@@ -101,65 +154,18 @@ print("The below is the makeup of ClinVar variants...\n",
 df["ClinVar Clinical Significance"].value_counts()) # /640, 17Sep2023
 ```
 
-We can also look at the types of variants within gnomAD and their consequence, including variants that are not in ClinVar and have not been clinically annotated. 
+We can also look at the types of variants within gnomAD and their consequence, including variants that are not in ClinVar and have not been clinically annotated. This is the overall makeup of the entire gnomAD dataset:
 ```{python}
 ####
 # ok now let me look at what other stuff we have to examine
 # df.columns
 
-# of the types of mutations -- and note not all entries have a VEP annotation... or do they? 
-# yeah seems so, just weird when i look into the csv e.g.
-# line 27 got no VEP going on,
-
-df["VEP Annotation"].value_counts()#.sum()
+df["VEP Annotation"].value_counts()
 ```
 
-
-Below cell move in a bit:
-```{python}
-# some neat crap
-# df["HGVS Consequence"].value_counts()
-
-# df["Protein Consequence"]  
-# df["Transcript"]
-
-"""
-So, 640 ClinVar mutations vs. 3470 gnomAD variants. Of ClinVar, approx. 26 pathogenic/likely. And of the gnomAD, like 55 stop gained, 57 frameshift, not seen. And yeah, maybe these for heterozygote, but maybe can see if those interfere with the shit, or at least add into ClinVar etc.
-
-This alone... OK. 
-
-Drill down into VEP, can use the below, will give us that pop of stuff, can say these should likely be added into ClinVar no problemo.
-"""
-# df_vep = df[df['VEP Annotation'].isin(['frameshift_variant',
-#                                        'stop_gained',
-#                                        'splice_donor_variant',
-#                                        'splice_acceptor_variant',
-#                                        ])]
-"""
-This would give us the number of likely new pathogenic crap. Umm. Yeah, is off VEP. And we can scoop these up and then compare against the other thing. So grab a few things to cross-ref:
-1. ClinVar
-2. gnomAD VEP consequence path/VEP categories, label by those
-
-And validate, maybe if, the ESM1b can be trusted. Or if maybe we can use this in combo with the docking                                     
-"""  
-```
-
-<!-- 
-Next part, I think we do want to use um, well, get the VEP that are most likely to be pathogenic, or idk if gnomAD as predicitions for all... nope. It'd be VEP. Yeah. So check it. Yeah like, so... 2 routes, 2 dataframes, maybe 2 and a half with the ones that are in gnomAD + ClinVar, and cross ref everything to ESM1b. So. Tomorrow... need to look into the zip function, get stats of hte stuff being left out. 
-
-Then all that gets compared... and we can say, hey look where these guys fall in the thing, do red lines, and then, yeah otherwise say, maybe the mechanism isn't understood but we can try and model and also express. By this mechanism overall better genetic monitoring, can do continuous improvement and yeah.
-
-And Pat, yeah, could see about... idk, angel investor, importing invertase and packaging on the cheap. Would be competitive space. Ideal scenario, partnership with QOL. Or just aggressive marketing and knowledge making, kinda sus but also... hmph. 
-
-yeah i don't wanna do the analysis while tired, tomorrah, and with that we should be all gucci, final pass, email the shit by 5, and then also be applying, idk, clearance, FBI, CIA, defense, other chemE crap, and say yeah wanna be in the engineering on more practical problems, more direct or reliable impact. Bing bang boom. And 
-apply abroad idk. -->
 
 In this study, I propose to employ protein-level tools to predict deleteriousness. In this preliminary analysis the variants that are within gnomAD are paired with their predicted severity from the ESM1b model. We'll only be able to examine the missense variants with this particular tool; let's now see how many missense variants have been clinically annotated:
 ```{python}
-# go below and bring that df here pl0x
-# df['Protein Consequence'].value_counts()
-# df['Transcript Consequence'].value_counts()
-# df['VEP Annotation'].value_counts()
 # we can use missense with ESM1b -- some like frameshift, stop gained, um, inframe del, can be examined further or be presumed to be deleterious I'd think. n = 1 protein_altering, this may need to be treated manually the annotation is funky
 
 # Define the annotation types to include (as of 20 Sep 2023, and for this analysis, just missense)
@@ -178,13 +184,13 @@ There are 1141 missense mutants recorded in gnomAD. Of the missense mutations th
 
 (*And an aside*, the ESM1b model is also capable of accounting for stop gained and inframe deletions, of which there are 55 and 15 recorded in gnomAD; it requires more labor and the sequences themselves, though. There's also all the intronic variants, these are outside of scope for now.)
 
-
+Read in the data
 ```{python}
 # Read in the data
 df_esm = pd.read_csv("data/ESM1b_SI.csv") 
 ```
 
-
+Define necessary functions
 ```{python}
 # Define relevant functions/class for later use 
 import re
@@ -212,15 +218,20 @@ class seqConversion:
         pos = int(pos)
 
         return aa_wt, pos, aa_mut
-    # FIXME: Include case for if No match, or weird ass entry
+    # FIXME: May need more handling cases, so far this is working on SI data 22 Sep 2023
     else:
         # Handle the case where no match is found
         return None, None, None
 
   def convertGnomadHGVS(self, hgvsEntry):
     # NOTE: This assumes we're only passing in the protein-level variants, which, should be the only case this function is called, i.e. missense variants
+    
+    # strip 'p.'
     hgvsEntry = hgvsEntry.lstrip('p.')
+    
+    # get the gnomad formatted variables
     aa_wt, pos, aa_mut = self._parseGnomadHGVS(hgvsEntry)
+    
     if aa_wt is None or pos is None or aa_mut is None:
             return None
     else:
@@ -237,8 +248,6 @@ class seqConversion:
     matches = re.findall(p_pattern, hgvsEntry)
 
     if matches:
-        # Extract the matching protein consequences
-        # FIXME: maybe not fix, but not this returns an array of matches. thereby we can have another feature, like, multiple matches, that we can deal with later. 
         return matches
     else:
         # Handle the case where no match is found
@@ -247,48 +256,25 @@ class seqConversion:
 ```
 
 
-Get only the missense variants
-
-```{python}
-# df['Protein Consequence'].value_counts()
-# df['Transcript Consequence'].value_counts()
-# df['VEP Annotation'].value_counts()
-# we can use missense with ESM1b -- some like frameshift, stop gained, um, inframe del, can be examined further or be presumed to be deleterious I'd think. n = 1 protein_altering, this may need to be treated manually the annotation is funky
-
-# Define the annotation types to include (as of 20 Sep 2023, and for this analysis, just missense)
-include_annotations = ["missense_variant"]
-mask = df["VEP Annotation"].isin(include_annotations)
-df_mis = df[mask]
-# print(df_mis)
-# df_mis['HGVS Consequence'].sample(100)
-```
-
-
-
 We now finally have:
 - Only missense variants in this dataframe
 - Functions for converson in the class definition, used in Converter object
-- Now we can define new compatible format as a feature in gnomAD data, can go back and forth between gnomAD <> ESM1b
+- Now we can define new compatible format as a feature in gnomAD data, can cross reference gnomAD <> ESM1b model
 
-So -- 
-Define the 1-letter, ESM1b variant format as a new feature in gnomAD dataframe
+So -- define the 1-letter, ESM1b variant format as a new feature in gnomAD dataframe
 
 ```{python}
 # we defined this above, can do again for clarity
 Converter = seqConversion()
 df_mis['HGVS_ESM1b']  = df_mis['HGVS Consequence'].apply(Converter.convertGnomadHGVS)
-
 # df_mis['HGVS_ESM1b'].head()
 ```
 
-OK. Now we have the feature. Now we need to cross-ref with the model, which should contain all of them... 
+Feature to enable cross referencing now defined. 
 
-OK, two things to do; append the score feature into gnomad for a histogram of predicted variant effects... and also, create new feature in df_esm, that says whether the variant is within gnomad. So we can then mark them in the score visualization, say where they are predicted to land.
+So, now we can update our two dataframes, gnomAD and ESM1b. First, add the score feature into gnomAD.
 
-First case, join onto gnomad and view histogram.
 ```{python}
-# df_mis = df_mis.merge(df_esm[['variant,']])
-
 # Merge the 'score' feature from df_scores into df_mis based on matching 'variant' or 'HGVS_ESM1b' values
 merged_df = df_mis.merge(df_esm[['variant', 'score']], left_on='HGVS_ESM1b', right_on='variant', how='left')
 
@@ -332,13 +318,11 @@ print(f'Number of entries with a score below -7.5: {count_below_minus_75}')
 
 ```
 
-[FIXME add another histogram with the shit colored if below -7.5, this would help for when we add the red lines at the known missense variants]
-
 For the missense variants in gnomAD, this gives a predicted 531 deleterious variants. This is far more numerous than the current number of known pathogenic variants, and only a few known missense variants can be used to compare against this prediction. The below two histograms will attempt to gage how useful this threshold may actually be in this scenario. 
 
 And again, this is only for missense mutations.
 
-The below shows the PALTRY amount of known/likely MISSENSE mutations that are deleterious
+The below shows the *three* known/likely MISSENSE mutations that are deleterious
 
 ```{python}
 
@@ -347,14 +331,14 @@ merged_df['ClinVar Clinical Significance'].value_counts()
 
 ```
 
-Lol 3 whole missense. Let's compare against ALL variants real quick:
+And against all variants in ClinVar:
 
 ```{python}
 # 29, with 66 conflicting
 df['ClinVar Clinical Significance'].value_counts()
 ```
 
-And against all known pathogenic, and see their cause:
+And against the known/likely pathogenic variants in ClinVar, and see their cause:
 
 ```{python}
 all_known_path = df['ClinVar Clinical Significance'].isin(['Pathogenic', 'Likely pathogenic', 'Pathogenic/Likely pathogenic  '])
@@ -362,9 +346,11 @@ akp_df = df[all_known_path]
 akp_df['VEP Annotation'].value_counts()
 ```
 
-Yeah so 29 pathogenic/likely pathogenic all known -- the others are frameshit/stop gained. Potential other stop gained mutations can be examined with this model in further work.
+29 pathogenic/likely pathogenic in ClinVar -- these other variants, the 26 besides the 3 missense, are frameshit, stop gained and splice effect variants. The ESM1b model is capable of also examining stop gained and indel variants, but requires more intense analysis.
 
-And... the 3 lol
+The next couple cells define and show dataframes for the pathogenic and benign variants to enable marking the figures. The authors of ESM1b note that a score threshold of -7.5 tends to give good separation between delterious and benign mutations.
+
+Pathogenic missense dataframe:
 
 ```{python}
 # Filter the 'gnomad' DataFrame to select pathogenic variants
@@ -377,11 +363,11 @@ pmv_df[['variant','score']]
 
 ```
 
-Let's also define the benign missense variants:
+Benign missense dataframe:
 
 ```{python}
 
-# merged_df['ClinVar Clinical Significance'].value_counts()
+# merged_df['ClinVar Clinical Significance'].value_counts() # peek the categories
 
 # Filter, get benign bariants
 benign_missense_variants = merged_df['ClinVar Clinical Significance'].isin(['Benign', 'Benign/Likely benign', 'Likely benign'])
@@ -393,10 +379,10 @@ print("Only benign, and likely benign")
 bmv_df[['variant','score']]
 ```
 
-So, all known/likely pathogenic below -7.5. And known/likely benign tend to be above -7.5; but this can be confirmation bias, and regardless lab confirmation would be preferable. Now I'm curious... let's plot these and the benign ones against each other, see how that arbitrary -7.5 cutoff does.
 
+With the very limited sample size of 3, all known/likely pathogenic missense variants' score is below -7.5. And known/likely benign tend to be above -7.5. However, limited data precludes any real inference here.
 
-And gotta create the feature first, don't think the plotly express API accepts conditional statements.
+Create the feature first, the plotly express API does not accept conditional statements for coloring.
 
 ```{python}
 # Define the threshold
@@ -404,14 +390,10 @@ threshold = -7.5
 
 # Create a new feature 'below threshold' based on the 'score' column
 merged_df['below threshold'] = merged_df['score'].apply(lambda x: 1 if x < threshold else 0)
-
-
 ```
-
+<!-- 
 ```{python}
 
-import matplotlib.pyplot as plt
-import plotly.express as px
 
 # Extract the 'score' column from the merged DataFrame
 scores = merged_df["score"]
@@ -436,11 +418,13 @@ fig.show()
 
 ... Lot of variants lol
 
-Next plot overlays the benign/likely benign and pathogenic/likely pathogenic; green as benign, red as pathogenic.
+Next plot overlays the benign/likely benign and pathogenic/likely pathogenic; green as benign, red as pathogenic. -->
 
 
 
 ```{python}
+# import matplotlib.pyplot as plt
+import plotly.express as px
 
 fig = px.histogram(
     merged_df,
@@ -470,11 +454,9 @@ fig.show()
 ```
 
 
-I think this though is THE PLOT. We see that, yes, the benign tend to be greater than -7.5; but there are more benign samples below the -7.5 threshold than there are pathogenic samples, and overall we have very limited data here to work with. The threshold can't be proven in our circumstance to be useful.
+This is THE PLOT. We see that, yes, the benign tend to be greater than -7.5; but there are more benign samples below the -7.5 threshold than there are pathogenic samples, and overall we have very limited data here to work with. The threshold can't be proven in our circumstance to be useful.
 
-But we do have recorded variants at the lowest score that we could start examining first, and at least identify some new variants that can be added. These can be modeled in AlphaFold and then examined manually, and put through the modeling pipeline. Bing bang boom, there is potential here. 
-
-
+But we do have recorded variants at the lowest score that we could start examining first, and at least identify some new variants that can be added. These can be modeled in AlphaFold and then examined manually, and put through the simulation pipeline.
 
 I'll also include a graph here -- this is all gnomAD variants, plotted with ClinVar Clinical Significance. The colors I could play with... and you can toggle data. Interesting to visualize just how many uncertain significance stuff there is. But the fact of the VERY small pathogenic group can only serve to bias, I don't think this graph is scientifically healthy to look at.
 
@@ -489,22 +471,6 @@ fig = px.histogram(
     title="Distribution of Scores Within Gnomad",
 )
 
-# # Add markers or lines for known pathogenic variants
-# for idx, row in pmv_df.iterrows():
-#     fig.add_shape(type='line', x0=row['score'], x1=row['score'], y0=0, y1=1, opacity = 0.4,
-#                   xref='x', yref='paper', line=dict(color='red'))
-
-# # Add markers/lines for benign variants
-# for idx, row in bmv_df.iterrows():
-#     fig.add_shape(type='line', x0=row['score'], x1=row['score'], y0=0, y1=1, opacity = 0.4,
-#                   xref='x', yref='paper', line=dict(color='green'))
-
-# # Add markers/lines for benign variants
-# for idx, row in xmv_df.iterrows():
-#     fig.add_shape(type='line', x0=row['score'], x1=row['score'], y0=0, y1=1, opacity = 0.2,
-#                   xref='x', yref='paper', line=dict(color='blue'))
-
-
 # # Customize the layout
 fig.update_layout(bargap=0.1)
 
@@ -512,336 +478,16 @@ fig.update_layout(bargap=0.1)
 fig.show()
 ```
 
-
-
-
+And so, for the sake of seeing what this most deleterious variant can demonstrate if modeled in AlphaFold... let's get the lowest scored missense mutation is. 
 
 ```{python}
-
-# Filter, get conflicting bariants
-x_missense_variants = merged_df['ClinVar Clinical Significance'].isin(['Conflicting interpretations of pathogenicity '])
-
-# bmv: benign missense variants
-xmv_df = merged_df[x_missense_variants]
-xmv_df = bmv_df.sort_values(by='score', ascending=True)
-print("Conflicting interpretations")
-xmv_df[['variant','score']]
+print("Lowest score:", merged_df.score.min())
+merged_df[['variant','score']].tail()
 ```
 
+If we look for this mutation in P14410 in UniProt,
+https://www.ebi.ac.uk/ProtVar/query?search=P14410%20L13P it's also predicted deleterious by CADD, a model from 2021 https://cadd.gs.washington.edu/info. We can also cross reference with this model in future, but ESM1b in its paper demonstrates superiority.
 
-Chat's go solution
-```{python}
-import plotly.graph_objects as go
+And... yeah, ColabFold not capable of the 1800 residue complex. Only likely possible in OpenFold/AlphaFold with better machine. And... idk if it'd be possible to validate can just model the SI component, would miss some of the interactions. Maybe though.
 
-# Create a histogram trace for the 'score' column
-histogram_trace = go.Histogram(
-    x=merged_df['score'],
-    nbinsx=20,
-    opacity=1,
-    name='All Variants',
-)
 
-# Create a trace for pathogenic variants
-pathogenic_trace = go.Scatter(
-    x=pmv_df['score'],
-    y=[0] * len(pmv_df),  # Set the y-values to 0
-    mode='markers',
-    marker=dict(size=10, color='red'),
-    name='Pathogenic Variants',
-)
-
-# Create a trace for benign variants
-benign_trace = go.Scatter(
-    x=bmv_df['score'],
-    y=[0] * len(bmv_df),  # Set the y-values to 0
-    mode='markers',
-    marker=dict(size=10, color='green'),
-    name='Benign Variants',
-)
-
-# Create a layout with annotations
-layout = go.Layout(
-    title='Distribution of Scores Within Gnomad',
-    xaxis=dict(title='Scores'),
-    yaxis=dict(visible=False),  # Hide the y-axis
-    showlegend=True,
-    annotations=[
-        dict(
-            x=row['score'],
-            y=1.02,  # Adjust the y-position above the graph
-            xref='x',
-            yref='paper',
-            text=row['variant'],
-            showarrow=True,
-            arrowhead=2,
-            ax=0,
-            ay=-40,  # Adjust the arrow length
-        ) for idx, row in pmv_df.iterrows()
-    ],
-)
-
-# Create a figure
-fig = go.Figure(data=[histogram_trace, pathogenic_trace, benign_trace], layout=layout)
-
-# Show the plot
-fig.show()
-
-```
-
-Can also include the ones that have conflicting interpretations, but it makes the graph messy; interesting to see the scores though.
-
-```{python}
-
-# include conflicting, where we actually then see several -10/-11; again small sample sizes but interesting to explore
-
-pathogenic_missense_variants = merged_df['ClinVar Clinical Significance'].isin(['Pathogenic', 'Likely pathogenic', 'Conflicting interpretations of pathogenicity']) # # adds 23 more samples that have varying scores
-pmv_df = merged_df[pathogenic_missense_variants]
-pmv_df = pmv_df.sort_values(by='score', ascending=True)
-print("Including conflicting interpretations")
-pmv_df[['variant','score']]
-
-
-# Create a histogram of scores from 'merged_df'
-fig = px.histogram(merged_df, x='score', nbins=20, opacity=0.7, 
-                   labels={'score': 'Scores'}, title='Distribution of Scores with in_gnomad Markers')
-
-# Add markers or lines for known pathogenic variants
-for idx, row in pmv_df.iterrows():
-    fig.add_shape(type='line', x0=row['score'], x1=row['score'], y0=0, y1=1,
-                  xref='x', yref='paper', line=dict(color='red'))
-
-# Customize the layout
-fig.update_layout(bargap=0.1)
-
-# Show the plot
-fig.show()
-
-
-
-```
-
-
-OK ... well, now we have all the plots we wanted. Can say hey... I mean it almost seems random lol. But... one problem is gonna be that this is only gonna be able to examine missense mutations. The DNA, early stop ones etc. there's quite a few, these... one can probably assume deleterious, but uhm, can also model it if desired. The intron mutations, it's interesting these exist. Um. Can... idk, we can review and see when asking for feedback. like hey any ideas pl0x? Otherwise I think this is pretty good anyway lol. Can say, idk, can do some lab validation on this model and see if there's anything to it. Let me... I'll read it real quick and see if any ideas pop up. THen we can go through all this and write up... ummm... can be now or later. It's 4, can go until 5. Then take a 'break' and switc to applying/humankind. bing bang boom
-
-
-THIS PLOT I'M SUS IS EVEN HELPFUL, SINCE IT'S... ALL POSSIBLE VARIANTS, NOT ENTIRELY HELPFUL LOL
-
-Now go off df_esm, and highlight where the gnomad variants are falling, can show there may be more out there idk or... yeah, of what is known what other variants could be examined that may be similarly horrible.
-
-```{python}
-
-# Assuming you have the list of variants present in df_mis
-variants_in_gnomad = df_mis['HGVS_ESM1b'].tolist()
-
-# Create a new binary feature 'in_gnomad' in df_esm based on whether each variant is in the list
-df_esm['in_gnomad'] = df_esm['variant'].isin(variants_in_gnomad).astype(int)
-
-# Display the updated df_scores DataFrame
-df_esm.head()
-
-len(df_mis) # 1339
-
-len(df_esm) # 36540
-
-len(df_mis)/len(df_esm) # approx. 3%
-
-```
-
-
-Alright, now our plot of where the gnomad crap is falling and the other variants that can be examined lol
-
-```{python}
-import plotly.express as px
-
-# Assuming you have the 'merged_df' DataFrame
-
-# Create a histogram with markers for 'in_gnomad' equal to 1
-fig = px.histogram(df_esm, x='score', nbins=20, opacity=0.7, color='in_gnomad', 
-                   labels={'score': 'Scores'}, title='Distribution of Scores with in_gnomad Markers')
-
-# Customize the layout
-fig.update_layout(bargap=0.1)
-
-# Show the plot
-fig.show()
-
-```
-
-
-
-
-<!-- Random info from the gnomAD ipynb:
-
-
-From gnomAD about:
-Stats
-v2 release is composed of 125,748 exomes and 15,708 genomes (GRCh37)
-gnomAD structural variant (SV) v2.1 represents 10,847 genomes (GRCh37)
-v3.1 spans 76,156 genomes (GRCh38)
-
-... Also we get 282832 high quality allele reads in this dataset, max (this is per variant). We have a min of approx. 10k allele reads for one variant with approx 100 reads, so it's only picked up 100 times from a limited dataset, in 10k genomes that pass quality check. I think.
-
-
- -->
-
-
-## ESM1b
-
-Preliminary analysis of the variants predicted by the ESM1b protein language model @brandesGenomewidePredictionDisease2023. A lower score predicts worse phenotypic outcomes. The 50 lowest scores and associated variants are reported below.  
-
-```{python}
-"""
-This cell counts the number of deleterious SI variants and also plots the distribution of scores.
-"""
-import pandas as pd
-import plotly.express as px
-
-df = pd.read_csv("data/ESM1b_SI.csv")
-# see the worst ones first
-# note we do see P475D, some vindication of this stuff, fucks the microenvironment, can go through some of these in Chimera
-df = df.sort_values(by="score")
-df.head()
-
-# define px plot
-fig = px.histogram(df, x="score", nbins=20, title="Variant Score Distribution")
-fig.show()
-
-# if we hover we see 143 variants predicted less than -18, this is all relative but these could be high priority ones to test first, and then use others from > 0 side and try those out lol
-bad_df = df[df.score < -18]
-
-# without index, first 50:
-# per Antony's answer: https://stackoverflow.com/questions/24644656/how-to-print-pandas-dataframe-without-index
-
-bad50 = bad_df.head(50)
-from IPython.display import HTML
-
-HTML(bad50.to_html(index=False))
-
-# one line:
-# HTML(bad_df.head(50).to_html(index=False))
-
-# if desire lackluster plot theme toggle lol
-
-# fig.update_layout(
-#     updatemenus=[
-#         {
-#             'type': 'buttons',
-#             'direction': 'left',
-#             'showactive': True,
-#             'x': 0.1,
-#             'xanchor': 'left',
-#             'y': 1.15,
-#             'yanchor': 'top',
-#             'buttons': [
-#                 {
-#                     'label': 'Light Mode',
-#                     'method': 'relayout',
-#                     'args': [{'paper_bgcolor': 'white', 'plot_bgcolor': 'white'}]
-#                 },
-#                 {
-#                     'label': 'Dark Mode',
-#                     'method': 'relayout',
-#                     'args': [{'paper_bgcolor': 'black', 'plot_bgcolor': 'black'}]
-#                 }
-#             ]
-#         }
-#     ]
-# )
-
-
-```
-
-
-
-FORBIDDEN SCRIPTS:
-<!-- 
-
-
-```{python}
-
-# stringNUMBERstring, use regex
-import re
-
-def extract_parts(input_string):
-    # Define a regex pattern to match the format "stringNUMBERstring"
-    pattern = r'([A-Za-z]+)(\d+)([A-Za-z]+)'
-
-    # Use re.match to find the first match in the input string
-    match = re.match(pattern, input_string)
-
-    if match: # which should be, but good in case weird data i don't anticipate
-        # Extract the three parts from the match object
-        first_string = match.group(1)
-        numbers = match.group(2)
-        second_string = match.group(3)
-
-        # Convert the numbers to an integer (if needed)
-        numbers = int(numbers)
-
-        return first_string, numbers, second_string
-    else:
-        # Handle the case where no match is found
-        return None, None, None
-
-# Example usage:
-input_string = "Pro6920Thr"
-first, numbers, second = extract_parts(input_string)
-print("First String:", first)
-print("Numbers:", numbers)
-print("Second String:", second)
-
-```
-
-
-```{python}
-# save me teh effort of writing a dictionary
-# seq1 is the one letter codes, seq3 the three letter
-from Bio.SeqUtils import seq1, seq3
-
-# Define the three-letter amino acid codes
-three_letter_code1 = "Pro"
-three_letter_code2 = "Thr"
-
-# Convert the three-letter codes to one-letter codes
-one_letter_code1 = seq1(three_letter_code1)
-one_letter_code2 = seq1(three_letter_code2)
-
-# Assemble a new string for comparison
-new_string = f"{one_letter_code1}{6920}{one_letter_code2}"
-
-# Print the results
-print("One-Letter Code for Pro:", one_letter_code1)
-print("One-Letter Code for Thr:", one_letter_code2)
-print("New String for Comparison:", new_string)
-
-```
-
-
-
-```{python}
-import pandas as pd
-
-# instantiate class above
-Converter = seqConversion()
-
-# Apply the getProteinVariants function to create a new column 'Protein Variants'
-df['Protein Variants'] = df['HGVS Consequence'].apply(Converter.getProteinVariants)
-
-
-# drop the c* variants, the intron/dna level, not immediately useful; could be, with further analysis but should all be intron varians
-p_df = df[df['Protein Variants'].notna()]
-
-# print(p_df['Protein Variants'].sample(100))
-
-
-# Check if any entries have a length greater than 1
-has_multiple_entries = p_df['Protein Variants'].apply(lambda x: len(x) > 1).any()
-
-# False is good only one entry ea... v. gucci homie G
-print(has_multiple_entries)
-
-# 1738, therefore the 3470 had half intronic variants etc. can try the other annotation another time to see...
-print("Number of protein-level variants in gnomad dataset:",len(p_df))
-
-# p_df.value_counts()
-``` -->
