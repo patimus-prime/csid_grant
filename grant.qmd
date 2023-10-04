@@ -1,5 +1,5 @@
 ---
-title: "Enhancing Population Prevalence Estimation of CSID and Improving Variant Annotation through Integrated Computational and Genetic Analysis"
+title: "Sweet Dreams and Genetic Schemes: Improving CSID Variant Annotation through Integrated Computational and Genetic Analysis"
 bibliography: csid_citations_bb.bib
 csl: nature-genetics.csl
 format:
@@ -30,32 +30,184 @@ This proposal outlines a novel approach that leverages recent advancements in co
 Historical studies of CSID prevalence and its mutational landscape have been constrained by small sample sizes and homogeneous populations. Early studies that are typically cited feature sample sizes of 3 in CSID's first description [@weijersDiarrhoeaCausedDeficiency1960], 399, of which 339 were Caucasian @welshIntestinalDisaccharidaseActivities1978, 56 Canadian Eskimos @ellestad-sayedDisaccharideMalabsorptionDietary1978 and 97 Greenlanders @gudmand-hoyerSucraseDeficiencyGreenland1987. In addition, recent findings indicate that the clinical presentation of CSID shares similarities with irritable bowel syndrome (IBS), raising concerns about clinical presentation and accurate diagnosis [@henstromFunctionalVariantsSucrase2018; @garcia-etxebarriaIncreasedPrevalenceRare2018a; @kimSucraseIsomaltaseDeficiencyPotential2020]. Furthermore, the potential variability of CSID's phenotype, including the population of heterozygote carriers that experience symptoms, necessitates a more thorough investigation of its genetic and molecular causes, improvement of diagnoistic tools and a reevaluation of its prevalence
 [@huseinHeterozygotesArePotential2019; @habermanCongenitalSucraseisomaltaseDeficiency2017;  @taskinPrevalenceCongenitalSucraseisomaltase2023].
 
-<!-- <sup>,</sup> -->
-
 ### Computational Advancements and Variant Prediction
 Advancements in computational biology offer an opportunity to enhance the prediciton and identification of deleterious mutations and inform diagnostics and prevalence in the population.
 
-Databases such as ClinVar and gnomAD now encompass diverse and extensive population variant data[@chenGenomewideMutationalConstraint2022; @landrumClinVarPublicArchive2016]. GnomAD includes ClinVar clinical annotations of mutations and predictions of variant effects from the Ensembl Variant Effect Predictor (VEP)[@mclarenEnsemblVariantEffect2016]. Previous work analyzing gnomAD data for Sucrase-Isomaltase (SI) gene only included known variants[@] 
+Databases such as ClinVar and gnomAD now encompass diverse and extensive population variant data[@chenGenomewideMutationalConstraint2022; @landrumClinVarPublicArchive2016]. GnomAD includes ClinVar clinical annotations of mutations and predictions of variant effects from the Ensembl Variant Effect Predictor (VEP)[@mclarenEnsemblVariantEffect2016]. 
 
-As of 17 September 2023, gnomAD contains 3470 variants for SI, and contains 646 ClinVar variants. Of the 646 ClinVar variants, 29 are annotated as pathogenic/likely pathogenic, 66 have conflicting interpretations of pathogenicity, and 272 are of uncertain significance. Therefore, considering all gnomAD data, most entries do not have clinical annotations or have not been well characterized.
+As of 17 September 2023, gnomAD contains 3470 variants for SI, and contains 646 ClinVar variants. Of the 646 ClinVar variants, 29 are annotated as pathogenic/likely pathogenic, 66 have conflicting interpretations of pathogenicity, and 272 are of uncertain significance. Therefore, considering all gnomAD data, most entries do not have clinical annotations or have not been well characterized. Previous work analyzing gnomAD data for Sucrase-Isomaltase (SI) gene only included known variants[@deleusseEstimatingPrevalenceCongenital2022] and did not analyze this population of variants of unknown consequence.
 
 Predictive tools can be employed to predict the impact of uncharacterized variants. GnomAD and ClinVar use VEP, which predicts type of consequence -- e.g. missense, frameshift, intron. This is often insufficient to assess the whether a variant is deleterious. Fortunately, new methods have emerged: both at the protein-ligand simulation level and some LLM-based models, one of which can be applied that predicts effects for all missense mutations[@brandesGenomewidePredictionDisease2023]. **A preliminary analysis using this model is provided below**. This and other new models could be applied to other types of variants such as indels, stop gained or even intron variants[@kurosawaPDIVASPathogenicityPredictor2023; @brandesGenomewidePredictionDisease2023].
 
 
 ### Protein Simulation and Interaction Analysis
-An orthogonal method to large language models is simulation at the protein/molecular level. Revolutionary tools like AlphaFold [@jumperHighlyAccurateProtein2021] and DiffDock[@corsoDiffDockDiffusionSteps2023] enable the modeling and evaluation of variant-protein interactions. AlphaFold can generate mutant structures from their sequences, and then these structures and their interaction with sucrose or with other proteins can be simulated using a variety of molecular simulation technologies. A promising recent tool is DiffDock[@corsoDiffDockDiffusionSteps2023], iterations of DiffDock to enable prediction protein-protein interactions or improve prediction accuracy[@ketataDiffDockPPRigidProteinProtein2023; @brocidiaconoPLANTAINDiffusioninspiredPose2023], and more established tools such as AutoDock Vina (**FIXME ADD VINA or autoDock**). These tools can be used to to predict the effects of SI variants on protein function, such as their interactions with sucrose or heterozygotic self-interactions. Integration of these tools is facilitated by the recently reported Foldy[@robertsFoldyWebApplication2023].
+An orthogonal method to large language models is simulation at the protein/molecular level. Revolutionary tools like AlphaFold [@jumperHighlyAccurateProtein2021] and DiffDock[@corsoDiffDockDiffusionSteps2023] enable the modeling and evaluation of variant-protein interactions. AlphaFold can generate mutant structures from their sequences, and then these structures and their interaction with sucrose or with other proteins can be simulated using a variety of molecular simulation technologies. A promising recent tool is DiffDock[@corsoDiffDockDiffusionSteps2023], iterations of DiffDock to enable prediction protein-protein interactions or improve prediction accuracy[@ketataDiffDockPPRigidProteinProtein2023; @brocidiaconoPLANTAINDiffusioninspiredPose2023], and more established tools such as AutoDock Vina [@trottAutoDockVinaImproving2010; @santos-martinsAcceleratingAutoDock4GPUs2021]. These tools can be used to to predict the effects of SI variants on protein function, such as their interactions with sucrose or heterozygotic self-interactions. Integration of these tools is facilitated by the recently reported Foldy[@robertsFoldyWebApplication2023].
 
-The sensitivity of these tools to separate predicted interactions of benign and mutant proteins is not guaranteed and warrants orthogonal predictions with large language models. Previous benchmarking of AlphaFold-generated structures with molecular docking had disappointing results[@wongBenchmarkingAlphaFoldenabledMolecular2022], but newer tools like DiffDock and PLANTAIN may provide better outcomes. DiffDock reports an accuracy, when simulating without a known binding pocket, of 29%[@corsoDiffDockDiffusionSteps2023]. PLANTAIN attempts to improve this accuracy by optimzing the scoring function DiffDock uses and may allow for more fruitful simulation[@brocidiaconoPLANTAINDiffusioninspiredPose2023]. AutoDock tools are more established but may be less accurate[@corsoDiffDockDiffusionSteps2023]; but do account for binding pockets and thus may be useful to compare predictions with. (**FIXME ADD VINA etc.**)
+The sensitivity of these tools to separate predicted interactions of benign and mutant proteins is not guaranteed and warrants orthogonal predictions with large language models. Previous benchmarking of AlphaFold-generated structures with molecular docking had disappointing results[@wongBenchmarkingAlphaFoldenabledMolecular2022], but newer tools like DiffDock and PLANTAIN may provide better outcomes. DiffDock reports an accuracy, when simulating without a known binding pocket, of 29%[@corsoDiffDockDiffusionSteps2023]. PLANTAIN attempts to improve this accuracy by optimzing the scoring function DiffDock uses and may allow for more fruitful simulation[@brocidiaconoPLANTAINDiffusioninspiredPose2023]. AutoDock tools are more established but may be less accurate[@corsoDiffDockDiffusionSteps2023]; but do account for binding pockets and thus may be useful to compare predictions with[@trottAutoDockVinaImproving2010; @santos-martinsAcceleratingAutoDock4GPUs2021].
 
 ### Genetic Analysis and Large Language Models
 Novel genetic analysis tools have recently emerged, providing insights into the genetic landscape of CSID. While gnomAD and ClinVar have integrated VEP, this model is limited in the scope of its predictions, and a more recent protein language model may provide better predictions for missense variants
 [@brandesGenomewidePredictionDisease2023]. Preliminary analysis employing this tool suggests a large number of missense variants of currently unknown consequence may be associated with CSID. This analysis can be cross-referenced with data from ClinVar, gnomAD, molecular simulations, and lab confirmation. By combining these diverse data sources, a more comprehensive picture of CSID's associated mutations and potential prevalence can be developed.
 
-Using this protein language model we can predict the delteriousness of missense mutations. The model outputs a score for each missense mutation, and an arbitrary threshold for deleterious/benign mutations is reported[@brandesGenomewidePredictionDisease2023]. The graph below is constructed using gnomAD data for missense variants and this model:
+Using this protein language model we can predict the delteriousness of missense mutations. The model outputs a score for each missense mutation, and an arbitrary threshold of -7.5 to separate deleterious/benign mutations is reported[@brandesGenomewidePredictionDisease2023]. A lower score predicts a more severe mutation. The graph below is constructed using gnomAD data for missense variants and this model. 
+
+```{python}
+# This cell is lengthy and is mostly just the preliminary analysis below all copied into one cell and outputting the relevant figure.
+import pandas as pd
+
+df = pd.read_csv("data/gnomAD_v2.1.1_SI_variants_17sep2023.csv")
+# gnomad.head()
+
+# create a new column 'D' as the concatenated strings of columns 'A', 'B', and 'C'
+df["Variant_ID"] = (
+    df["Chromosome"].astype(str)
+    + "-"
+    + df["Position"].astype(str)
+    + "-"
+    + df["Reference"].astype(str)
+    + "-"
+    + df["Alternate"].astype(str)
+)
+
+# move the new column 'D' to the far left by reindexing the columns
+df = df.reindex(columns=["Variant_ID"] + df.columns.tolist())
+include_annotations = ['missense_variant']
+mask = df['VEP Annotation'].isin(include_annotations)
+df_mis = df[mask]
+df_esm = pd.read_csv("data/ESM1b_SI.csv") 
+
+import re
+from Bio.SeqUtils import seq1, seq3
+   
+class seqConversion:
+  def __init__(self) -> None:
+      pass
+  
+  # intended to be private method, intermediate for convertGnomadHGVS below.      
+  def _parseGnomadHGVS(self, hgvsEntry):
+    # Define a regex pattern to match the format "stringNUMBERstring"
+    pattern = r'([A-Za-z]+)(\d+)([A-Za-z]+)'
+
+    # Use re.match to find the first match in the input string, need to account for multiple and check the duplicates if exist
+    match = re.match(pattern, hgvsEntry)
+
+    if match: # which should be, but good in case weird data i don't anticipate
+        # Extract the three parts from the match object
+        aa_wt = match.group(1)
+        pos = match.group(2)
+        aa_mut = match.group(3)
+
+        # Convert the numbers to an integer (if needed)
+        pos = int(pos)
+
+        return aa_wt, pos, aa_mut
+    # FIXME: May need more handling cases, so far this is working on SI data 22 Sep 2023
+    else:
+        # Handle the case where no match is found
+        return None, None, None
+
+  def convertGnomadHGVS(self, hgvsEntry):
+    # NOTE: This assumes we're only passing in the protein-level variants, which, should be the only case this function is called, i.e. missense variants
+    
+    # strip 'p.'
+    hgvsEntry = hgvsEntry.lstrip('p.')
+    
+    # get the gnomad formatted variables
+    aa_wt, pos, aa_mut = self._parseGnomadHGVS(hgvsEntry)
+    
+    if aa_wt is None or pos is None or aa_mut is None:
+            return None
+    else:
+      # codes to one-letter codes; from BioSeq import above
+      aa_wt1 = seq1(aa_wt)
+      aa_mut1 = seq1(aa_mut)
+
+      # assemble the esm1b format of gnomad entry
+      newFormat = f"{aa_wt1}{pos}{aa_mut1}"
+      return newFormat
+ 
+  def getProteinVariants(hgvsEntry):
+    p_pattern = r"p.*"  # Use .* to match zero or more occurrences of 'p'
+    matches = re.findall(p_pattern, hgvsEntry)
+
+    if matches:
+        return matches
+    else:
+        # Handle the case where no match is found
+        return None
+
+# Converter = seqConversion()
+# df_mis['HGVS_ESM1b']  = df_mis['HGVS Consequence'].apply(Converter.convertGnomadHGVS)
+
+# to deal with error:
+Converter = seqConversion()
+# df_mis.loc[:, 'HGVS_ESM1b'] = df_mis['HGVS Consequence'].apply(Converter.convertGnomadHGVS)
+df_mis = df_mis.assign(HGVS_ESM1b=df_mis['HGVS Consequence'].apply(Converter.convertGnomadHGVS))
+
+
+merged_df = df_mis.merge(df_esm[['variant', 'score']], left_on='HGVS_ESM1b', right_on='variant', how='left')
+
+import matplotlib.pyplot as plt
+import plotly.express as px
+
+# Extract the 'score' column from the merged DataFrame
+scores = merged_df["score"]
+
+
+all_known_path = df['ClinVar Clinical Significance'].isin(['Pathogenic', 'Likely pathogenic', 'Pathogenic/Likely pathogenic  '])
+akp_df = df[all_known_path]
+
+pathogenic_missense_variants = merged_df['ClinVar Clinical Significance'].isin(['Pathogenic', 'Likely pathogenic',]) # # adds 23 more samples that have varying scores
+
+pmv_df = merged_df[pathogenic_missense_variants]
+pmv_df = pmv_df.sort_values(by='score', ascending=True)
+
+# Filter, get benign bariants
+benign_missense_variants = merged_df['ClinVar Clinical Significance'].isin(['Benign', 'Benign/Likely benign', 'Likely benign'])
+
+# bmv: benign missense variants
+bmv_df = merged_df[benign_missense_variants]
+bmv_df = bmv_df.sort_values(by='score', ascending=True)
+
+# Define the threshold
+threshold = -7.5
+
+# Create a new feature 'below threshold' based on the 'score' column
+merged_df['below threshold'] = merged_df['score'].apply(lambda x: "yes" if x < threshold else "no")
+
+import plotly.express as px
+
+fig = px.histogram(
+    merged_df,
+    x="score",
+    color = "below threshold",
+    nbins=20,
+    opacity=1,
+    labels={"score": "Scores"},
+    title="Distribution of Scores Within Gnomad",
+)
+
+# Add markers or lines for known pathogenic variants
+for idx, row in pmv_df.iterrows():
+    fig.add_shape(type='line', x0=row['score'], x1=row['score'], y0=0, y1=1, opacity = 0.4,
+                  xref='x', yref='paper', line=dict(color='red'))
+
+# Add markers/lines for benign variants
+for idx, row in bmv_df.iterrows():
+    fig.add_shape(type='line', x0=row['score'], x1=row['score'], y0=0, y1=1, opacity = 0.4,
+                  xref='x', yref='paper', line=dict(color='green'))
+
+# Customize the layout
+fig.update_layout(bargap=0.1)
+
+# Show the plot
+fig.show()
+```
+
 
 In this preliminary analysis, ClinVar annotated variants that are benign/likely benign and pathogenic/likely pathogenic are shown with green/red lines overlaid on the distribution of variants in gnomAD and their predicted deleteriousness. There are limited missense annotated variants compared to the overall dataset and skepticism is warranted -- but a trend does appear amongst benign mutations to be above the score threshold and be correctly separated.  
 
-Overall, the population of predicted missense mutations that may be deleterious is XXX. To validate these results, a good approach may be to start from the most deleterious predicted mutation and work up the scores.
+Overall, there are 531 predicted missense mutations that may be deleterious. To validate these results, a good approach may be to start from the most deleterious predicted mutation and assess increasingly positive scores.
 
 ### Background and Collaboration
 
@@ -64,6 +216,7 @@ My background includes an MS in bioinformatics where I gained experience in some
 So, finding a PI for this project that may be more experienced with either the disease or some of the methods involved would be very helpful and appreciated.
 
 Additionally, there are several other opportunities for collaboration on this project:
+
 - D'Amato, Naim for lab confirmation and disease expertise
 - Foldy developers/Keasling lab/Berkeley National Lab for features may use and integrate into the software
 - DiffDock and PLANTAIN authors, or other molecular simulation experts
@@ -75,7 +228,9 @@ Additionally, there are several other opportunities for collaboration on this pr
 
 **(Ask about salary/stipend/consulting? idk how this works with QOL)**
 
-Using the Foldy architecture/out of the box solution for AlphaFold and molecular simulation, computation will run on Google Cloud. The SI complex is about 1500 residues; Foldy documentation suggests that 3000 residue complexes be run on a machine type that costs about $5500 a month. Therefore a mid-range machine may be appropriate, one of which costs around $2500 a month. Low-range machines of about $600 a month are also available but unlikely to have sufficient resources to run the SI complex.
+The cost estimates stated here are retrieved from Google Cloud Pricing Calculator on 26 Sep 2023. 
+
+Using the Foldy architecture/out of the box solution for AlphaFold and molecular simulation, computation will run on Google Cloud. The SI complex is about 1500 residues; Foldy documentation suggests that 3000 residue complexes be run on a machine type that costs $3700 a month. Therefore a mid-range machine may be appropriate, one of which costs $2682 a month. Low-range machines of about $420-1509 a month are also available but are unlikely to have sufficient resources to run the SI complex. The cost estimates are attached as pdfs.
 
 The scope of the final project will dictate how many variants are run and the implementation of other tools beyond what is included in Foldy (Foldy includes AlphaFold, DiffDock and AutoDock Vina along with database integration). These tools will likely run on the same machine but require additional development time.
 
@@ -90,6 +245,7 @@ Further, there are models not included in Foldy. Timeline to implementation of d
 Laboratory confirmation can occur after all results have been generated, or after smaller bolus runs of the simulations. This strategy may be superior to inform model optimization and feasibility. 
 
 A reasonable order of events or timeline may look like the below:
+
 1. Validate LLM model: **Lab validation, timeline per variant? of LLM missense model(??)**
 2. Initial protein simulation analysis: setup of as-is of Foldy and development, validation of scripts to generate mutant protein sequences (2 weeks)
 3. Running a small sample, validate protein simulation strategy; unknown how much time to generate each SI complex, molecular simulation should be relatively quick
@@ -265,9 +421,13 @@ So -- define the 1-letter, ESM1b variant format as a new feature in gnomAD dataf
 
 ```{python}
 # we defined this above, can do again for clarity
-Converter = seqConversion()
-df_mis['HGVS_ESM1b']  = df_mis['HGVS Consequence'].apply(Converter.convertGnomadHGVS)
+# Converter = seqConversion()
+# df_mis['HGVS_ESM1b']  = df_mis['HGVS Consequence'].apply(Converter.convertGnomadHGVS)
 # df_mis['HGVS_ESM1b'].head()
+Converter = seqConversion()
+# df_mis.loc[:, 'HGVS_ESM1b'] = df_mis['HGVS Consequence'].apply(Converter.convertGnomadHGVS)
+df_mis = df_mis.assign(HGVS_ESM1b=df_mis['HGVS Consequence'].apply(Converter.convertGnomadHGVS))
+
 ```
 
 Feature to enable cross referencing now defined. 
@@ -389,7 +549,7 @@ Create the feature first, the plotly express API does not accept conditional sta
 threshold = -7.5
 
 # Create a new feature 'below threshold' based on the 'score' column
-merged_df['below threshold'] = merged_df['score'].apply(lambda x: 1 if x < threshold else 0)
+merged_df['below threshold'] = merged_df['score'].apply(lambda x: "yes" if x < threshold else "no")
 ```
 <!-- 
 ```{python}
@@ -454,10 +614,10 @@ fig.show()
 ```
 
 
-This is THE PLOT. We see that, yes, the benign tend to be greater than -7.5; but there are more benign samples below the -7.5 threshold than there are pathogenic samples, and overall we have very limited data here to work with. The threshold can't be proven in our circumstance to be useful.
+This is the most informative figure in this preliminary analysis. We see that, yes, the benign tend to be greater than -7.5; but there are more benign samples below the -7.5 threshold than there are pathogenic samples, and overall we have very limited data here to work with. The threshold can't be proven in our circumstance to be useful. There is at least a trend for benign variants to be above the threshold.
 
 But we do have recorded variants at the lowest score that we could start examining first, and at least identify some new variants that can be added. These can be modeled in AlphaFold and then examined manually, and put through the simulation pipeline.
-
+<!-- 
 I'll also include a graph here -- this is all gnomAD variants, plotted with ClinVar Clinical Significance. The colors I could play with... and you can toggle data. Interesting to visualize just how many uncertain significance stuff there is. But the fact of the VERY small pathogenic group can only serve to bias, I don't think this graph is scientifically healthy to look at.
 
 ```{python}
@@ -476,7 +636,8 @@ fig.update_layout(bargap=0.1)
 
 # # Show the plot
 fig.show()
-```
+``` 
+--->
 
 And so, for the sake of seeing what this most deleterious variant can demonstrate if modeled in AlphaFold... let's get the lowest scored missense mutation is. 
 
@@ -487,7 +648,4 @@ merged_df[['variant','score']].tail()
 
 If we look for this mutation in P14410 in UniProt,
 https://www.ebi.ac.uk/ProtVar/query?search=P14410%20L13P it's also predicted deleterious by CADD, a model from 2021 https://cadd.gs.washington.edu/info. We can also cross reference with this model in future, but ESM1b in its paper demonstrates superiority.
-
-And... yeah, ColabFold not capable of the 1800 residue complex. Only likely possible in OpenFold/AlphaFold with better machine. And... idk if it'd be possible to validate can just model the SI component, would miss some of the interactions. Maybe though.
-
 
