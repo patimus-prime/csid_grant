@@ -23,10 +23,10 @@ NOTE: Can do @X for single citation, multiple use [@X; @Y] and will do commas et
 
 ###### (Note: light/dark mode button in top right.)
 
-# Abstract
+## Abstract
 This proposal outlines a novel approach that leverages recent advancements in computational tools and genetic analysis to provide more thorough variant annotation for CSID and thus facilitate clinical diagnosis and present a more robust estimate of CSID prevalence. Previous studies have been been hindered by historical limitations in study design and data availability. By integrating genetic databases, protein simulation techniques, and variant prediction tools, this study aims to identify new variants of interest and contribute insights into the molecular and genetic pathology of CSID, its clinical implications and potentially its prevalence.
 
-# Introduction and Preliminary Analysis
+### Introduction
 Historical studies of CSID prevalence and its mutational landscape have been constrained by small sample sizes and homogeneous populations. Early studies that are typically cited feature sample sizes of 3 in CSID's first description [@weijersDiarrhoeaCausedDeficiency1960], 399, of which 339 were Caucasian @welshIntestinalDisaccharidaseActivities1978, 56 Canadian Eskimos @ellestad-sayedDisaccharideMalabsorptionDietary1978 and 97 Greenlanders @gudmand-hoyerSucraseDeficiencyGreenland1987. In addition, recent findings indicate that the clinical presentation of CSID shares similarities with irritable bowel syndrome (IBS), raising concerns about clinical presentation and accurate diagnosis [@henstromFunctionalVariantsSucrase2018; @garcia-etxebarriaIncreasedPrevalenceRare2018a; @kimSucraseIsomaltaseDeficiencyPotential2020]. Furthermore, the potential variability of CSID's phenotype, including the population of heterozygote carriers that experience symptoms, necessitates a more thorough investigation of its genetic and molecular causes, improvement of diagnoistic tools and a reevaluation of its prevalence
 [@huseinHeterozygotesArePotential2019; @habermanCongenitalSucraseisomaltaseDeficiency2017;  @taskinPrevalenceCongenitalSucraseisomaltase2023].
 
@@ -211,22 +211,26 @@ Overall, there are 531 predicted missense mutations that may be deleterious. To 
 
 ### Background and Collaboration
 
-My background includes an MS in bioinformatics where I gained experience in some protein analysis tooling, 2 years in pharameceutical R&D at Eli Lilly performing physicochemical testing on antibodies and peptides to assess stability, and a BS in Chemical Engineering, BS in Molecular and Cellular Biology and BA in Biochemistry. I've been working on this proposal after identifying a gap in the literature, and after being intrigued by this disease during my patient experience with CSID as a candidate explanation.
+My background includes an MS in bioinformatics where I gained experience in protein analysis, 2 years in pharameceutical R&D at Eli Lilly performing physicochemical testing on antibodies and peptides to assess stability, and a BS in Chemical Engineering, BS in Molecular and Cellular Biology and BA in Biochemistry. I've been working on this proposal after identifying a gap in the literature, and after being intrigued by this disease during my patient experience with CSID as a candidate explanation.
 
 So, finding a PI for this project that may be more experienced with either the disease or some of the methods involved would be very helpful and appreciated.
 
 Additionally, there are several other opportunities for collaboration on this project:
 
-- D'Amato, Naim for lab confirmation and disease expertise
-- Foldy developers/Keasling lab/Berkeley National Lab for features may use and integrate into the software
+- Dr. D'Amato, and Dr. Naim for lab confirmation and disease expertise; I've also reached out to Dr. Treem who wrote some earlier reviews
+- Foldy developers/Keasling lab/Berkeley National Lab for features such as DiffDock-PP or PLANTAIN that may be used and integrated into the software
 - DiffDock and PLANTAIN authors, or other molecular simulation experts
 
 
 ## Cost/Budget
 
+
+*This section to be finalized after nailing down lab confirmation* 
+
 **(Ask about lab confirmation costs)**
 
 **(Ask about salary/stipend/consulting? idk how this works with QOL)**
+
 
 The cost estimates stated here are retrieved from Google Cloud Pricing Calculator on 26 Sep 2023. 
 
@@ -235,6 +239,10 @@ Using the Foldy architecture/out of the box solution for AlphaFold and molecular
 The scope of the final project will dictate how many variants are run and the implementation of other tools beyond what is included in Foldy (Foldy includes AlphaFold, DiffDock and AutoDock Vina along with database integration). These tools will likely run on the same machine but require additional development time.
 
 ## Timeline and Milestones
+
+
+*This section to be finalized after nailing down lab confirmation* 
+
 
 (**Ask about lab confirmation timeline**)
 
@@ -264,9 +272,7 @@ By synergistically combining computational analysis, protein simulation, and gen
  -->
 
 
-# Supplement 
-
-## Preliminary Analysis, gnomAD data and protein language model
+# Supplement/Preliminary Analysis
 
 As of 17 September 2023, the gnomAD v2.1.1 dataset contains 3470 variants, and ClinVar contains 988 variants. The ClinVar annotations are: 
 ```{python}
