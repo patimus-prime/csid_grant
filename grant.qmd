@@ -5,6 +5,7 @@ csl: nature-genetics.csl
 format:
   html:
     code-fold: true
+    code-copy: true
     theme:
       light: zephyr
       dark: cyborg
@@ -19,37 +20,52 @@ that we can have Vancouver style, since that's what most of these peeps publish 
 Using Zotero -> Export Collection -> Better Bibtex. I've done just the .bib and also the one with files, can see what ends up being better. Suspect the .bib to be sufficient but could be fun to play around with.
 
 NOTE: Can do @X for single citation, multiple use [@X; @Y] and will do commas etc and be lovely
+
+Showing PDBs: https://github.com/jmbuhr/quarto-molstar
+... 4 Oct 2023 not working
+
 -->
 
 ###### (Note: light/dark mode button in top right.)
 
+<!-- `{{{< mol-rcsb 3lpp >}}}` -->
+
 ## Abstract
-This proposal outlines a novel approach that leverages recent advancements in computational tools and genetic analysis to provide more thorough variant annotation for CSID and thus facilitate clinical diagnosis and present a more robust estimate of CSID prevalence. Previous studies have been been hindered by historical limitations in study design and data availability. By integrating genetic databases, protein simulation techniques, and variant prediction tools, this study aims to identify new variants of interest and contribute insights into the molecular and genetic pathology of CSID, its clinical implications and potentially its prevalence.
+This proposal outlines a novel approach that leverages recent advancements in computational tools and genetic analysis to enhance variant annotation for CSID, facilitating clinical diagnosis and improving understanding of CSID prevalence. Previous studies have been been hindered by historical limitations in study design and data availability. By integrating genetic databases, protein simulation techniques, and variant prediction tools, this study aims to identify new variants of interest and contribute insights into the molecular and genetic pathology of CSID, its clinical implications and prevalence.
 
 ### Introduction
-Historical studies of CSID prevalence and its mutational landscape have been constrained by small sample sizes and homogeneous populations. Early studies that are typically cited feature sample sizes of 3 in CSID's first description [@weijersDiarrhoeaCausedDeficiency1960], 399, of which 339 were Caucasian @welshIntestinalDisaccharidaseActivities1978, 56 Canadian Eskimos @ellestad-sayedDisaccharideMalabsorptionDietary1978 and 97 Greenlanders @gudmand-hoyerSucraseDeficiencyGreenland1987. In addition, recent findings indicate that the clinical presentation of CSID shares similarities with irritable bowel syndrome (IBS), raising concerns about clinical presentation and accurate diagnosis [@henstromFunctionalVariantsSucrase2018; @garcia-etxebarriaIncreasedPrevalenceRare2018a; @kimSucraseIsomaltaseDeficiencyPotential2020]. Furthermore, the potential variability of CSID's phenotype, including the population of heterozygote carriers that experience symptoms, necessitates a more thorough investigation of its genetic and molecular causes, improvement of diagnoistic tools and a reevaluation of its prevalence
+Historical studies of CSID prevalence and its mutational landscape have been constrained by small sample sizes and homogeneous populations. Early studies that are typically cited feature sample sizes of:
+
+- 3 in CSID's first description [@weijersDiarrhoeaCausedDeficiency1960]
+- 399, of which 339 were Caucasian @welshIntestinalDisaccharidaseActivities1978
+- 56 Canadian Eskimos @ellestad-sayedDisaccharideMalabsorptionDietary1978 
+- 97 Greenlanders @gudmand-hoyerSucraseDeficiencyGreenland1987
+
+In addition, recent findings indicate that the clinical presentation of CSID shares similarities with irritable bowel syndrome, raising concerns about accurate diagnosis [@henstromFunctionalVariantsSucrase2018; @garcia-etxebarriaIncreasedPrevalenceRare2018a; @kimSucraseIsomaltaseDeficiencyPotential2020]. Furthermore, the potential variability of CSID's phenotype, including heterozygote carriers that experience symptoms, necessitates a more thorough investigation of its genetic and molecular causes, improvement of diagnoistic tools and a reevaluation of its prevalence
 [@huseinHeterozygotesArePotential2019; @habermanCongenitalSucraseisomaltaseDeficiency2017;  @taskinPrevalenceCongenitalSucraseisomaltase2023].
 
-### Computational Advancements and Variant Prediction
+### Genetic Databases and Variant Prediction
 Advancements in computational biology offer an opportunity to enhance the prediciton and identification of deleterious mutations and inform diagnostics and prevalence in the population.
 
-Databases such as ClinVar and gnomAD now encompass diverse and extensive population variant data[@chenGenomewideMutationalConstraint2022; @landrumClinVarPublicArchive2016]. GnomAD includes ClinVar clinical annotations of mutations and predictions of variant effects from the Ensembl Variant Effect Predictor (VEP)[@mclarenEnsemblVariantEffect2016]. 
+Databases such as ClinVar and gnomAD now encompass diverse and extensive population variant data[@chenGenomewideMutationalConstraint2022; @landrumClinVarPublicArchive2016]. As of 17 September 2023, gnomAD contains 3470 variants for SI, and contains 646 ClinVar variants. Of the 646 ClinVar variants, 29 are annotated as pathogenic/likely pathogenic, 66 have conflicting interpretations of pathogenicity, and 272 are of uncertain significance. Therefore, considering all gnomAD data, most entries do not have clinical annotations or have not been well characterized. Previous work analyzing gnomAD data for the Sucrase-Isomaltase (SI) gene to estimate disease prevalence only included known variants[@deleusseEstimatingPrevalenceCongenital2022] and did not analyze this population of uncharacterized variants.
 
-As of 17 September 2023, gnomAD contains 3470 variants for SI, and contains 646 ClinVar variants. Of the 646 ClinVar variants, 29 are annotated as pathogenic/likely pathogenic, 66 have conflicting interpretations of pathogenicity, and 272 are of uncertain significance. Therefore, considering all gnomAD data, most entries do not have clinical annotations or have not been well characterized. Previous work analyzing gnomAD data for Sucrase-Isomaltase (SI) gene only included known variants[@deleusseEstimatingPrevalenceCongenital2022] and did not analyze this population of variants of unknown consequence.
+GnomAD includes ClinVar clinical annotations of mutations and predictions of variant effects from the Ensembl Variant Effect Predictor (VEP)[@mclarenEnsemblVariantEffect2016]. Predictive tools like VEP can be employed to predict the impact of uncharacterized variants. VEP predicts type of consequence -- e.g. missense, frameshift, intron. This is often insufficient to assess the whether a variant is deleterious. 
 
-Predictive tools can be employed to predict the impact of uncharacterized variants. GnomAD and ClinVar use VEP, which predicts type of consequence -- e.g. missense, frameshift, intron. This is often insufficient to assess the whether a variant is deleterious. Fortunately, new methods have emerged: both at the protein-ligand simulation level and some LLM-based models, one of which can be applied that predicts effects for all missense mutations[@brandesGenomewidePredictionDisease2023]. **A preliminary analysis using this model is provided below**. This and other new models could be applied to other types of variants such as indels, stop gained or even intron variants[@kurosawaPDIVASPathogenicityPredictor2023; @brandesGenomewidePredictionDisease2023].
+Fortunately, new methods have emerged: both at the protein-ligand simulation level and some LLM-based models, one of which can be applied that predicts effects for all missense mutations[@brandesGenomewidePredictionDisease2023]. **A preliminary analysis using this model is provided below, and predicts a number of deleterious missense mutations**. This and other new models could be applied to other types of variants such as indels, stop gained or even intron variants[@kurosawaPDIVASPathogenicityPredictor2023; @brandesGenomewidePredictionDisease2023].
 
 
 ### Protein Simulation and Interaction Analysis
-An orthogonal method to large language models is simulation at the protein/molecular level. Revolutionary tools like AlphaFold [@jumperHighlyAccurateProtein2021] and DiffDock[@corsoDiffDockDiffusionSteps2023] enable the modeling and evaluation of variant-protein interactions. AlphaFold can generate mutant structures from their sequences, and then these structures and their interaction with sucrose or with other proteins can be simulated using a variety of molecular simulation technologies. A promising recent tool is DiffDock[@corsoDiffDockDiffusionSteps2023], iterations of DiffDock to enable prediction protein-protein interactions or improve prediction accuracy[@ketataDiffDockPPRigidProteinProtein2023; @brocidiaconoPLANTAINDiffusioninspiredPose2023], and more established tools such as AutoDock Vina [@trottAutoDockVinaImproving2010; @santos-martinsAcceleratingAutoDock4GPUs2021]. These tools can be used to to predict the effects of SI variants on protein function, such as their interactions with sucrose or heterozygotic self-interactions. Integration of these tools is facilitated by the recently reported Foldy[@robertsFoldyWebApplication2023].
+An orthogonal method to large language models is simulation at the protein/molecular level. Revolutionary tools like AlphaFold [@jumperHighlyAccurateProtein2021] and DiffDock[@corsoDiffDockDiffusionSteps2023] enable the modeling and evaluation of variant-protein interactions. AlphaFold can generate mutant structures from their sequences, and then these structures and their interaction with sucrose or with other proteins can be simulated using a variety of molecular simulation technologies. A promising recent tool is DiffDock[@corsoDiffDockDiffusionSteps2023], iterations of DiffDock to enable prediction protein-protein interactions or improve prediction accuracy[@ketataDiffDockPPRigidProteinProtein2023; @brocidiaconoPLANTAINDiffusioninspiredPose2023], and more established tools such as AutoDock Vina [@trottAutoDockVinaImproving2010; @santos-martinsAcceleratingAutoDock4GPUs2021]. These tools can be used to to predict the effects of SI variants on protein function, i.e. their interactions with sucrose, heterozygotic self-interactions, or interactions with other proteins. Integration of these tools is facilitated by the recently reported Foldy[@robertsFoldyWebApplication2023], which conveniently packages AlphaFold, DiffDock, Autodock Vina, and databases into a web app that is easily deployed.
 
-The sensitivity of these tools to separate predicted interactions of benign and mutant proteins is not guaranteed and warrants orthogonal predictions with large language models. Previous benchmarking of AlphaFold-generated structures with molecular docking had disappointing results[@wongBenchmarkingAlphaFoldenabledMolecular2022], but newer tools like DiffDock and PLANTAIN may provide better outcomes. DiffDock reports an accuracy, when simulating without a known binding pocket, of 29%[@corsoDiffDockDiffusionSteps2023]. PLANTAIN attempts to improve this accuracy by optimzing the scoring function DiffDock uses and may allow for more fruitful simulation[@brocidiaconoPLANTAINDiffusioninspiredPose2023]. AutoDock tools are more established but may be less accurate[@corsoDiffDockDiffusionSteps2023]; but do account for binding pockets and thus may be useful to compare predictions with[@trottAutoDockVinaImproving2010; @santos-martinsAcceleratingAutoDock4GPUs2021].
+However, the sensitivity of either of these tools, large language model based or protein simulation based, to distinguish benign and deleterious mutatations is not guaranteed. Cross referencing predictions from the large language models and simulation tools, and validating in lab will be necessary. Previous benchmarking of AlphaFold-generated structures with molecular docking had mixed results[@wongBenchmarkingAlphaFoldenabledMolecular2022]. However, emerging  tools like DiffDock and PLANTAIN may provide better outcomes. DiffDock reports an accuracy, when simulating without a known binding pocket, of 29%[@corsoDiffDockDiffusionSteps2023]. PLANTAIN attempts to improve this accuracy by optimzing the scoring function DiffDock uses, and accounts for binding pockets, and may be more fruitful[@brocidiaconoPLANTAINDiffusioninspiredPose2023]. AutoDock tools are more established but may be less accurate[@corsoDiffDockDiffusionSteps2023]; but do account for binding pockets and thus may be useful to compare predictions with[@trottAutoDockVinaImproving2010; @santos-martinsAcceleratingAutoDock4GPUs2021].
 
 ### Genetic Analysis and Large Language Models
 Novel genetic analysis tools have recently emerged, providing insights into the genetic landscape of CSID. While gnomAD and ClinVar have integrated VEP, this model is limited in the scope of its predictions, and a more recent protein language model may provide better predictions for missense variants
-[@brandesGenomewidePredictionDisease2023]. Preliminary analysis employing this tool suggests a large number of missense variants of currently unknown consequence may be associated with CSID. This analysis can be cross-referenced with data from ClinVar, gnomAD, molecular simulations, and lab confirmation. By combining these diverse data sources, a more comprehensive picture of CSID's associated mutations and potential prevalence can be developed.
+[@brandesGenomewidePredictionDisease2023]. Preliminary analysis (an interesting figure is shown directly below, the full analysis is in the last section) employing this tool suggests a large number of missense variants of currently unknown consequence may be associated with CSID. 
 
-Using this protein language model we can predict the delteriousness of missense mutations. The model outputs a score for each missense mutation, and an arbitrary threshold of -7.5 to separate deleterious/benign mutations is reported[@brandesGenomewidePredictionDisease2023]. A lower score predicts a more severe mutation. The graph below is constructed using gnomAD data for missense variants and this model. 
+<!-- This analysis can be cross-referenced with data from ClinVar, gnomAD, molecular simulations, and lab confirmation. By combining these diverse data sources, a more comprehensive picture of CSID's associated mutations and potential prevalence can be developed. -->
+
+Using this protein language model we can predict the delteriousness of missense mutations. The model outputs a score for each missense mutation, and a threshold of -7.5 to separate deleterious/benign mutations is reported[@brandesGenomewidePredictionDisease2023]. A lower score predicts a more severe mutation. The graph below is constructed using gnomAD data for missense variants and predictions from this model. 
 
 ```{python}
 # This cell is lengthy and is mostly just the preliminary analysis below all copied into one cell and outputting the relevant figure.
@@ -205,21 +221,23 @@ fig.show()
 ```
 
 
-In this preliminary analysis, ClinVar annotated variants that are benign/likely benign and pathogenic/likely pathogenic are shown with green/red lines overlaid on the distribution of variants in gnomAD and their predicted deleteriousness. There are limited missense annotated variants compared to the overall dataset and skepticism is warranted -- but a trend does appear amongst benign mutations to be above the score threshold and be correctly separated.  
+In this preliminary analysis, ClinVar annotated variants that are benign/likely benign and pathogenic/likely pathogenic are shown with green/red lines overlaid on the distribution of variants in gnomAD and their predicted deleteriousness. There are limited missense annotated variants compared to the overall dataset -- but a trend does appear amongst benign mutations to be above the score threshold and be correctly separated.  
 
-Overall, there are 531 predicted missense mutations that may be deleterious. To validate these results, a good approach may be to start from the most deleterious predicted mutation and assess increasingly positive scores.
+Overall, there are 531 missense mutations that fall below the threshold and are predicted to be deleterious. To validate these results, a good approach may be to start from the most deleterious (negatively scored) predicted mutation and assess variants with increasingly positive scores.
 
 ### Background and Collaboration
 
-My background includes an MS in bioinformatics where I gained experience in protein analysis, 2 years in pharameceutical R&D at Eli Lilly performing physicochemical testing on antibodies and peptides to assess stability, and a BS in Chemical Engineering, BS in Molecular and Cellular Biology and BA in Biochemistry. I've been working on this proposal after identifying a gap in the literature, and after being intrigued by this disease during my patient experience with CSID as a candidate explanation.
+My background includes an MS in bioinformatics where I gained experience in protein analysis, 2 years in pharameceutical R&D at Eli Lilly performing physicochemical testing on antibodies and peptides to assess stability, and a BS in Chemical Engineering, BS in Molecular and Cellular Biology and BA in Biochemistry. 
 
-So, finding a PI for this project that may be more experienced with either the disease or some of the methods involved would be very helpful and appreciated.
+My motivation to study CSID stems from my patent experience, where CSID emerged as a potential explanation. I identified a gap in the literature and saw an opportunity to leverage new computational tools to improve patient outcomes. I'm open to share more details about my journey. The patient experience with the disease as a candidate has been arduous and contributing to better care for others would be deeply gratifying. 
 
-Additionally, there are several other opportunities for collaboration on this project:
+The preparation of this proposal has also been highly informative for career aspirations. I'm actively considering pursuing doctoral studies (MD, PhD, or an MD/PhD) and this project aligns well with my goal of connecting research and healthcare.
 
-- Dr. D'Amato, and Dr. Naim for lab confirmation and disease expertise; I've also reached out to Dr. Treem who wrote some earlier reviews
-- Foldy developers/Keasling lab/Berkeley National Lab for features such as DiffDock-PP or PLANTAIN that may be used and integrated into the software
-- DiffDock and PLANTAIN authors, or other molecular simulation experts
+The proposed project is intricate and collaboration is indispensible. Seeking guidance and partnerships with experts has been a priority from the start. Several opportunities for collaboration include:
+
+- Collaborating with Dr. D'Amato, and Dr. Naim for lab confirmation and disease expertise. I've also reached out to Dr. Treem, who authored some earlier reviews. Together lab confirmation can be facilitated/organized and a thorough understanding and robust DOE can be achieved.
+- Engage with the Foldy development team (Keasling Lab/Berkeley National Lab) for features such as DiffDock-PP or PLANTAIN that may be used and integrated into the software; the development in this project may benefit others, or integration of these tools can be conducted in parallel as part of other efforts.
+- Seek input from the authors of DiffDock and PLANTAIN, and other molecular simulation experts. Their insights would be invaluable for optimizing the approach and understanding the strengths and limitations of these tools. 
 
 
 ## Cost/Budget
@@ -272,7 +290,7 @@ By synergistically combining computational analysis, protein simulation, and gen
  -->
 
 
-# Supplement/Preliminary Analysis
+# Preliminary Analysis
 
 As of 17 September 2023, the gnomAD v2.1.1 dataset contains 3470 variants, and ClinVar contains 988 variants. The ClinVar annotations are: 
 ```{python}
