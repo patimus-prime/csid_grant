@@ -1,0 +1,14 @@
+project:
+  type: website
+
+bibliography: csid_citations_bb.bib
+csl: nature-genetics.csl
+
+format:
+  html:
+    code-fold: true
+    code-copy: true
+    theme:
+      light: zephyr
+      dark: cyborg
+      # light: vapor

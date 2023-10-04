@@ -1,15 +1,5 @@
 ---
 title: "Sweet Dreams and Genetic Schemes: Improving CSID Variant Annotation through Integrated Computational and Genetic Analysis"
-bibliography: csid_citations_bb.bib
-csl: nature-genetics.csl
-format:
-  html:
-    code-fold: true
-    code-copy: true
-    theme:
-      light: zephyr
-      dark: cyborg
-      # light: vapor
 ---
 
 <!-- Alt title: There is limited evidence to support CSID being a rare disease. -->
