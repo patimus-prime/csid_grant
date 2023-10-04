@@ -1,4 +1,4 @@
-- source: project
+- source: grant
   netlify:
     - id: "207ad155-7a3b-4ae9-992a-d45256f95515"
       url: "https://csidgrant.netlify.app"
