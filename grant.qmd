@@ -229,7 +229,7 @@ My background includes an MS in bioinformatics where I gained experience in prot
 
 My motivation to study CSID stems from my own patient experience, where CSID emerged as a potential explanation. I identified a gap in the literature and saw an opportunity to leverage new computational tools to improve patient outcomes. My personal experience in obtatining a diagnosis of this disease has been arduous, and I would find it deeply gratifying to contribute to a more effective diagnostic toolset for the betterment of other patients' care. 
 
-The preparation of this proposal has also been highly informative for career aspirations. I'm actively considering pursuing doctoral studies (MD, PhD, or an MD/PhD) and this project aligns well with my goal of connecting research and healthcare.
+The preparation of this proposal has also been highly informative for career aspirations. I'm actively considering pursuing doctoral studies and this project aligns well with my goal of impacting patients through research.
 
 The proposed project is intricate and collaboration is indispensible. Seeking guidance and partnerships with experts has been a priority from the start. Several opportunities for collaboration include:
 
@@ -239,13 +239,6 @@ The proposed project is intricate and collaboration is indispensible. Seeking gu
 
 
 ## Cost/Budget
-
-
-*This section to be finalized after nailing down lab confirmation* 
-
-**(Ask about lab confirmation costs)**
-
-**(Ask about salary/stipend/consulting? idk how this works with QOL)**
 
 
 The cost estimates stated here are retrieved from Google Cloud Pricing Calculator on 26 Sep 2023. 
@@ -270,7 +263,7 @@ Laboratory confirmation can occur after all results have been generated, or afte
 
 A reasonable order of events or timeline may look like the below:
 
-1. Validate protein language model: **Lab validation, timeline per variant? of protein language missense model(??)**
+1. Validate protein language model: **Lab validation timeline?)**
 2. Initial protein simulation analysis: setup of as-is of Foldy and development, validation of scripts to generate mutant protein sequences (2 weeks)
 3. Running a small sample, validate protein simulation strategy; unknown how much time to generate each SI complex, molecular simulation should be relatively quick
 4. **Lab confirmation/validation of Fold/docking results(??)**
