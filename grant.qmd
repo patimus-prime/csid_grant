@@ -20,7 +20,9 @@ Syntax would be, sourcing from rcsb:
 
 -->
 
-###### (Note: light/dark mode button in top right.)
+###### Note: light/dark mode button in top right.
+
+Code is available [on my github]( https://github.com/patimus-prime/csid_grant).
 
 
 ## Abstract
